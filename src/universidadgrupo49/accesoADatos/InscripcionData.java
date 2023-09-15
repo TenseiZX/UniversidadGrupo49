@@ -101,35 +101,28 @@ public class InscripcionData {
     public List<Materia> obtenerMateriasCursadas(int id) {
         List<Materia> materias = new ArrayList<Materia>();
 
-        
-//        String sql="select inscripcion.idMateria, nombre, anio from inscripcion,"
-//                + "materia where"
-            String sql = "SELECT inscripcion.idMateria, nombre, anio FROM inscripcion "
-                    + "JOIN materia ON(inscripcion.idMateria = materia.idMateria) WHERE inscripcion.idAlumno =  ?;";
+        String sql = "SELECT inscripcion.idMateria, nombre, anio FROM inscripcion "
+                + "JOIN materia ON(inscripcion.idMateria = materia.idMateria) WHERE inscripcion.idAlumno =  ?;";
         try {
-            
-            ps=con.prepareStatement(sql);
+
+            ps = con.prepareStatement(sql);
             ps.setInt(1, id);
-            rs=ps.executeQuery();
+            rs = ps.executeQuery();
             Materia materia;
-            
-            while(rs.next()){
-            materia= new Materia();
-            materia.setIdMateria(rs.getInt("idMateria"));
-            materia.setNombre(rs.getString("nombre"));
-            materia.setAnio(rs.getInt("anio"));
-            materias.add(materia);
+
+            while (rs.next()) {
+                materia = new Materia();
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnio(rs.getInt("anio"));
+                materias.add(materia);
             }
-        ps.close();
-        
+            ps.close();
+
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"error");
+            JOptionPane.showMessageDialog(null, "error");
         }
         return materias;
-        }
-    
     }
-    
-     
 
-
+}
