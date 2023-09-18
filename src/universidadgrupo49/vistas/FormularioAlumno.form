@@ -206,9 +206,7 @@
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="jdcFechaNac">
       <Properties>
-        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection component="jtcampofecha" type="bean"/>
-        </Property>
+        <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jbBuscar">
@@ -244,6 +242,13 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtcampofecha">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtcampofechaMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtcampofechaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbModificar">
       <Properties>
@@ -283,6 +288,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtid">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtidActionPerformed"/>
       </Events>

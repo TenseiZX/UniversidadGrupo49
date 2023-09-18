@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -97,7 +99,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
             }
         });
 
-        jdcFechaNac.setNextFocusableComponent(jtcampofecha);
+        jdcFechaNac.setDateFormatString("yyyy-MM-dd");
 
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +126,18 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbSalirActionPerformed(evt);
+            }
+        });
+
+        jtcampofecha.setEditable(false);
+        jtcampofecha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtcampofechaMouseClicked(evt);
+            }
+        });
+        jtcampofecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtcampofechaActionPerformed(evt);
             }
         });
 
@@ -154,6 +168,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
         jLabel7.setText("ID:");
 
+        jtid.setEditable(false);
         jtid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtidActionPerformed(evt);
@@ -415,6 +430,22 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     private void jtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtidActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtidActionPerformed
+
+    private void jtcampofechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtcampofechaActionPerformed
+       
+    }//GEN-LAST:event_jtcampofechaActionPerformed
+
+    private void jtcampofechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtcampofechaMouseClicked
+         String fecha=jtcampofecha.getText();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        
+        try {
+            Date date= sdf.parse(fecha);
+            jdcFechaNac.setDate(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }//GEN-LAST:event_jtcampofechaMouseClicked
 
 
     
