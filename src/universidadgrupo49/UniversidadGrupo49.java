@@ -21,6 +21,7 @@ public class UniversidadGrupo49 {
 //        Materia m2 = new Materia("derecho", 1, true);
 //        MateriaData mat = new MateriaData();
 //        mat.guardarMateria(m2);
+
 //        Materia materiaEncontrada=mat.buscarMateria(1);
 //        System.out.println("nombre: "+materiaEncontrada.getNombre());
 //        

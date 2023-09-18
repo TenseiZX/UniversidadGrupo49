@@ -370,6 +370,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        
         int cambiarAInactivo=Integer.parseInt(jtDocumentodni.getText());
         if(ad.buscarAlumnoPorDni(cambiarAInactivo)!=null){
         int msj=JOptionPane.showConfirmDialog(this,"estas seguro que desea eliminar este alumno?");

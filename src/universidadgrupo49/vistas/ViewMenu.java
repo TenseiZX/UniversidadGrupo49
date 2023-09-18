@@ -5,6 +5,7 @@
 package universidadgrupo49.vistas;
 
 import universidadgrupo49.accesoADatos.AlumnoData;
+import universidadgrupo49.accesoADatos.MateriaData;
 
 /**
  *
@@ -13,10 +14,12 @@ import universidadgrupo49.accesoADatos.AlumnoData;
 public class ViewMenu extends javax.swing.JFrame {
 
     private AlumnoData ad;
+    private MateriaData md;
     
     public ViewMenu() {
         initComponents();
         ad=new AlumnoData();
+        md=new MateriaData();
     }
 
     /**
@@ -69,6 +72,11 @@ public class ViewMenu extends javax.swing.JFrame {
         jMenu2.setText("Materia");
 
         jMenuItem2.setText("Formulario de materia");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
@@ -76,6 +84,11 @@ public class ViewMenu extends javax.swing.JFrame {
         jMenu3.setText("Administracion");
 
         jMenuItem3.setText("Manejo de inscripciones");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuItem4.setText("Manejo de notas");
@@ -136,6 +149,27 @@ public class ViewMenu extends javax.swing.JFrame {
     private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
        this.dispose();
     }//GEN-LAST:event_jMenu5ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        FormularioMateria fm=new FormularioMateria(md);
+        fm.setVisible(true);
+        escritorio.add(fm);
+        escritorio.moveToFront(fm);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        
+        escritorio.removeAll();
+        escritorio.repaint();
+        ManejoInscripciones mi=new ManejoInscripciones();
+        mi.setVisible(true);
+        escritorio.add(mi);
+        escritorio.moveToFront(mi);
+        
+        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
