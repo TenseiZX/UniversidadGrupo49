@@ -106,7 +106,7 @@ public class InscripcionData {
         List<Materia> materias = new ArrayList<Materia>();
 
         String sql = "SELECT inscripcion.idMateria, nombre, anio FROM inscripcion "
-                + "JOIN materia ON(inscripcion.idMateria = materia.idMateria) WHERE inscripcion.idAlumno =  ?;";
+                + "JOIN materia ON(inscripcion.idMateria = materia.idMateria) WHERE inscripcion.idAlumno =  ?";
         try {
 
             ps = con.prepareStatement(sql);
@@ -128,6 +128,36 @@ public class InscripcionData {
         }
 //        System.out.println(materias);
         return materias;
+    }
+    
+    
+    public List<Materia> obtenerNoCursadas(int id){
+        
+        List<Materia> materias = new ArrayList<Materia>();
+
+        String sql = "SELECT materia.idMateria, nombre, anio FROM materia WHERE materia.idMateria not in (select idMateria from inscripcion where idAlumno= ?)";
+        try {
+
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            Materia materia;
+
+            while (rs.next()) {
+                materia = new Materia();
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnio(rs.getInt("anio"));
+                materias.add(materia);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "error");
+        }
+//        System.out.println(materias);
+        return materias;
+    
     }
 
     

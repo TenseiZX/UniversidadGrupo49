@@ -65,6 +65,11 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         });
 
         jRadioButton2.setText("Materias no inscriptas");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
         tablaMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -169,6 +174,10 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         cargarCursadas();
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        cargarNoCursadas();
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
     private void cargarComboAlumno() {
 
         AlumnoData ad = new AlumnoData();
@@ -212,10 +221,21 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
             modelo.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),materia.getAnio()});
         }
         
+  
         
         
         
+    }
+    
+    
+    private void cargarNoCursadas(){
+    alu= (Alumno)jcbAlumno.getSelectedItem();
         
+        List<Materia> materias=new ArrayList<>();
+        materias=data.obtenerNoCursadas(alu.getIdAlumno());
+        for (Materia materia : materias) {
+            modelo.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),materia.getAnio()});
+        }
     }
 
 
