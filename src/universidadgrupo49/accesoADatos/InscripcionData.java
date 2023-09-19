@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import universidadgrupo49.entidades.Alumno;
 import universidadgrupo49.entidades.Inscripcion;
 import universidadgrupo49.entidades.Materia;
 
@@ -20,6 +23,7 @@ public class InscripcionData {
     Inscripcion inscripcion = null;
     MateriaData matData;
     AlumnoData aluData;
+    Alumno alu;
 
     public InscripcionData() {
         con = Conexion.getConexion();//Se va a conectar a la base de datos
@@ -122,7 +126,10 @@ public class InscripcionData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "error");
         }
+//        System.out.println(materias);
         return materias;
     }
+
+    
 
 }

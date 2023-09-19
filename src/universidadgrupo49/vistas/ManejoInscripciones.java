@@ -1,22 +1,36 @@
-
 package universidadgrupo49.vistas;
 
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import universidadgrupo49.accesoADatos.AlumnoData;
+import universidadgrupo49.accesoADatos.InscripcionData;
+import universidadgrupo49.accesoADatos.MateriaData;
 import universidadgrupo49.entidades.Alumno;
-
+import universidadgrupo49.entidades.Materia;
 
 public class ManejoInscripciones extends javax.swing.JInternalFrame {
 
     AlumnoData ad;
-    
+    Alumno alu;
+    InscripcionData data;
+    MateriaData md;
+    DefaultTableModel modelo = new DefaultTableModel();
+
     public ManejoInscripciones() {
         initComponents();
+        data=new InscripcionData();
+        cargarComboAlumno();
+        armarCabecera();
         
-        this.ad= ad;
+
+
+        this.ad = ad;
+        this.alu = alu;
+        this.data= data;
+        this.md=md;
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -28,7 +42,7 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaMaterias = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -44,10 +58,15 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         jLabel2.setText("Listado de materias");
 
         jRadioButton1.setText("Materias inscriptas");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         jRadioButton2.setText("Materias no inscriptas");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,7 +77,7 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaMaterias);
 
         jButton1.setText("Inscribir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -84,12 +103,14 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel1)
                                 .addGap(34, 34, 34)
                                 .addComponent(jcbAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jRadioButton1)
                                 .addGap(36, 36, 36)
                                 .addComponent(jRadioButton2))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 816, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 816, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(105, 105, 105)
+                                .addComponent(jLabel2))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(211, 211, 211)
                         .addComponent(jButton1)
@@ -106,9 +127,9 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jcbAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
+                .addGap(94, 94, 94)
                 .addComponent(jLabel2)
-                .addGap(55, 55, 55)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2))
@@ -141,32 +162,62 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jcbAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnoActionPerformed
-       
+
     }//GEN-LAST:event_jcbAlumnoActionPerformed
 
-    
-    private void cargarComboAlumno(){
-        
-//        List<Alumno> cantAlu=ad.listarAlumnos();
-//        
-//        for (Alumno alumno:cantAlu){
-//           
-//               jcbAlumno.addItem(cantAlu.getClass().getName()));
-//        }
-    
-//        for (ad.listarAlumnos() listarAlumnos: listaAlumno) {
-//            
-//            jcbAlumno.addItem(ad.listarAlumnos());
-//        }
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        cargarCursadas();
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
-           
+    private void cargarComboAlumno() {
 
+        AlumnoData ad = new AlumnoData();
+        List<Alumno> alumnos = ad.listarAlumnos();
 
-    
+        for (Alumno alumno : alumnos) {
+            jcbAlumno.addItem(alumno);
+        }
+
+    }
+
+    private void armarCabecera() {
+
+        modelo.addColumn("id");
+        modelo.addColumn("nombre");
+        modelo.addColumn("año");
+
+        tablaMaterias.setModel(modelo);
+
+//        String[] datos = new String[3];
+//
+//        tablaMaterias.setModel(modelo);
+
     }
     
+    private void cargarCursadas(){
     
     
+//    data.mostrarCursado(tablaMaterias);
+    
+    
+        alu= (Alumno)jcbAlumno.getSelectedItem();
+        
+        List<Materia> materias=new ArrayList<>();
+//        System.out.println(alu.getIdAlumno());
+//        System.out.println(data.obtenerMateriasCursadas(1));
+        materias=data.obtenerMateriasCursadas(alu.getIdAlumno());
+//        System.out.println(materias);
+        
+        for (Materia materia : materias) {
+            modelo.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),materia.getAnio()});
+        }
+        
+        
+        
+        
+        
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -178,7 +229,7 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JComboBox<String> jcbAlumno;
+    private javax.swing.JComboBox<Alumno> jcbAlumno;
+    private javax.swing.JTable tablaMaterias;
     // End of variables declaration//GEN-END:variables
 }

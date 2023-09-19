@@ -33,22 +33,31 @@ public class UniversidadGrupo49 {
 //           }
 //        Inscripcion inscripcionUNO=new Inscripcion(x1, m2, 9);  NO FUNCIONA
 //        
-//        InscripcionData ins= new InscripcionData();
-//       
-//       ins.guardarInscripcion(inscripcionUNO, 1, 1);
-//           InscripcionData insUno=new InscripcionData();
-//           
-//           for(Materia materia:insUno.obtenerMateriasCursadas(2)){
-//               System.out.println(materia.getIdMateria());
-//               System.out.println(materia.getNombre());
-//               System.out.println(materia.getAnio());
-//           }
+        
+
+
+
+//           InscripcionData ins= new InscripcionData();
+       
+//       ins.guardarInscripcion(inscripcionUNO, 1, 1);  ////no sirve
+           InscripcionData insUno=new InscripcionData();
+           
+           for(Materia materia:insUno.obtenerMateriasCursadas(1)){
+               System.out.println("id materia: "+materia.getIdMateria());
+               System.out.println("nombre: "+materia.getNombre());
+               System.out.println("año: "+materia.getAnio());
+           }
+
+
 //        AlumnoData alu=new AlumnoData();
 //        System.out.println(alu.buscarAlumnoPorDni(1234567));
 //        
-        Alumno x1 = new Alumno(1234567, "roberta", "tierra", LocalDate.of(1980, 4, 25), true);
-        AlumnoData alu = new AlumnoData();
-       alu.ModificarAlumno(x1);
+        
+
+
+//Alumno x1 = new Alumno(1234567, "roberta", "tierra", LocalDate.of(1980, 4, 25), true);
+//        AlumnoData alu = new AlumnoData();
+//       alu.ModificarAlumno(x1);
 
 
 
