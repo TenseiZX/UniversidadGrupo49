@@ -106,7 +106,7 @@ public class InscripcionData {
         List<Materia> materias = new ArrayList<Materia>();
 
         String sql = "SELECT inscripcion.idMateria, nombre, anio FROM inscripcion "
-                + "JOIN materia ON(inscripcion.idMateria = materia.idMateria) WHERE inscripcion.idAlumno =  ?";
+                + "JOIN materia ON(inscripcion.idMateria = materia.idMateria) WHERE inscripcion.idAlumno = ? and estado=1";
         try {
 
             ps = con.prepareStatement(sql);
@@ -135,7 +135,7 @@ public class InscripcionData {
         
         List<Materia> materias = new ArrayList<Materia>();
 
-        String sql = "SELECT materia.idMateria, nombre, anio FROM materia WHERE materia.idMateria not in (select idMateria from inscripcion where idAlumno= ?)";
+        String sql = "SELECT materia.idMateria, nombre, anio FROM materia WHERE materia.idMateria not in (select idMateria from inscripcion where idAlumno=?)or estado=0";
         try {
 
             ps = con.prepareStatement(sql);
@@ -158,6 +158,29 @@ public class InscripcionData {
 //        System.out.println(materias);
         return materias;
     
+    }
+    
+    
+    
+    public void modificarMateriaInscripcionActiva(Materia materia) {
+
+        String sql = "update materia set nombre=?, anio=?, estado=? where idMateria=?";
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, materia.getNombre());
+            ps.setInt(2, materia.getAnio());
+            ps.setInt(4, materia.getIdMateria());
+            ps.setBoolean(3, materia.isEstado());
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "materia modificada exitosamente");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "error al acceder a la tabla materia");
+        }
+
     }
 
     
