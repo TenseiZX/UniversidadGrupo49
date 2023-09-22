@@ -29,29 +29,33 @@ public class InscripcionData {
         con = Conexion.getConexion();//Se va a conectar a la base de datos
     }
 
-    public void guardarInscripcion(Inscripcion ins, int idAlumno, int idMateria) {
+    public void guardarInscripcion(Inscripcion ins) {
 
-//        String sql = "INSERT INTO inscripcion(nota, alumno.idAlumno, materia.idMateria) VALUES (?,?,?)";
-//        try {
-//            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-//            ps.setDouble(1, inscripcion.getNota());
-//            ps.setInt(2, inscripcion.getAlumno().getIdAlumno());
-//            ps.setInt(3, inscripcion.getMateria().getIdMateria());
-//            ps.executeUpdate();
-//            rs = ps.getGeneratedKeys();
-//
-//            if (rs.next()) {
-//
-//                inscripcion.setIdInscripto(rs.getInt(1));
-//                JOptionPane.showMessageDialog(null, "inscripcion guardada con exito");
-//
-//            }
-//
-//            ps.close();
-//
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "error");
-//        }
+//        Inscripcion ins, int idAlumno, int idMateria
+        
+        String sql = "INSERT INTO inscripcion(nota, idAlumno, idMateria) VALUES (?,?,?)";
+        
+        try {
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setDouble(1,ins.getNota());
+            ps.setInt(2, ins.getAlumno().getIdAlumno());
+            ps.setInt(3, ins.getMateria().getIdMateria());
+            ps.executeUpdate();
+            rs = ps.getGeneratedKeys();
+
+            if (rs.next()) {
+
+                ins.setIdInscripto(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "inscripcion guardada con exito");
+
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "error"+ex);
+        }
+        
 //String sql = "insert into inscripcion (nota, idAlumno, idMateria) values (" + inscripcion.getNota() + "," + inscripcion.getAlumno().getIdAlumno() + "," + inscripcion.getMateria().getIdMateria() + ")";
 //        try {
 //            ps = con.prepareStatement(sql);
@@ -129,13 +133,12 @@ public class InscripcionData {
 //        System.out.println(materias);
         return materias;
     }
-    
-    
-    public List<Materia> obtenerNoCursadas(int id){
-        
+
+    public List<Materia> obtenerNoCursadas(int id) {
+
         List<Materia> materias = new ArrayList<Materia>();
 
-        String sql = "SELECT materia.idMateria, nombre, anio FROM materia WHERE materia.idMateria not in (select idMateria from inscripcion where idAlumno=?)or estado=0";
+        String sql = "SELECT materia.idMateria, nombre, anio FROM materia WHERE materia.idMateria not in (select idMateria from inscripcion where idAlumno=?)";
         try {
 
             ps = con.prepareStatement(sql);
@@ -157,32 +160,56 @@ public class InscripcionData {
         }
 //        System.out.println(materias);
         return materias;
-    
-    }
-    
-    
-    
-    public void modificarMateriaInscripcionActiva(Materia materia) {
 
-        String sql = "update materia set nombre=?, anio=?, estado=? where idMateria=?";
+    }
+
+    public void anularInscripcion(int idAlumno, int idMateria) {
+
+        String sql = "delete from inscripcion where idAlumno=? and idMateria=?";
 
         try {
+            
             ps = con.prepareStatement(sql);
-            ps.setString(1, materia.getNombre());
-            ps.setInt(2, materia.getAnio());
-            ps.setInt(4, materia.getIdMateria());
-            ps.setBoolean(3, materia.isEstado());
-            int exito = ps.executeUpdate();
-            if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "materia modificada exitosamente");
-            }
-
+            ps.setInt(1, idAlumno);//aca tomamos el id del alumno para dar de baja
+            ps.setInt(2, idMateria);//aca tomamos el id de la materia para dar de baja
+            
+          int msj=JOptionPane.showConfirmDialog(null,"estas seguro que desea dar de baja este alumno?");
+          if(msj==0){
+          ps.executeUpdate();
+          JOptionPane.showMessageDialog(null, "alumno dado de baja exitosamente");
+          }
+            
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla materia");
+            JOptionPane.showMessageDialog(null, "error al acceder a la BD"+ex);
         }
 
     }
+    
+    
+    
+    
+   
+                
 
+           
+        
     
 
+//    public void modificarMateriaInscripcionActiva(Materia materia) {
+//
+//        String sql = "update materia set estado=1 where idMateria=?";
+//
+//        try {
+//            ps = con.prepareStatement(sql);
+//            ps.setBoolean(3, materia.isEstado());
+//            int exito = ps.executeUpdate();
+//            if (exito == 1) {
+//                JOptionPane.showMessageDialog(null, "inscripcion modificada exitosamente");
+//            }
+//
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "error al acceder a la tabla materia-inscripcion");
+//        }
+//
+//    }
 }

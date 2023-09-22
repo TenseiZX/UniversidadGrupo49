@@ -15,12 +15,16 @@ public class UniversidadGrupo49 {
     public static void main(String[] args) {
 
         Connection con = Conexion.getConexion();
-//        Alumno x1=new Alumno (1234567,"Luna","Sol",LocalDate.of(1980, 4,25),true);
-//        AlumnoData alu=new AlumnoData();
-//        alu.guardarAlumno(x1);
-//        Materia m2 = new Materia("derecho", 1, true);
-//        MateriaData mat = new MateriaData();
-//        mat.guardarMateria(m2);
+        
+        
+        Alumno x1=new Alumno (77777774,"diosmio","Sol",LocalDate.of(1980, 4,25),true);
+        AlumnoData alu=new AlumnoData();
+        alu.guardarAlumno(x1);
+        
+        
+        Materia m2 = new Materia("porfavor", 1, true);
+        MateriaData mat = new MateriaData();
+        mat.guardarMateria(m2);
 
 //        Materia materiaEncontrada=mat.buscarMateria(1);
 //        System.out.println("nombre: "+materiaEncontrada.getNombre());
@@ -40,13 +44,16 @@ public class UniversidadGrupo49 {
 //           InscripcionData ins= new InscripcionData();
        
 //       ins.guardarInscripcion(inscripcionUNO, 1, 1);  ////no sirve
-           InscripcionData insUno=new InscripcionData();
            
-           for(Materia materia:insUno.obtenerMateriasCursadas(1)){
-               System.out.println("id materia: "+materia.getIdMateria());
-               System.out.println("nombre: "+materia.getNombre());
-               System.out.println("año: "+materia.getAnio());
-           }
+
+
+//            InscripcionData insUno=new InscripcionData();
+//           
+//           for(Materia materia:insUno.obtenerMateriasCursadas(1)){
+//               System.out.println("id materia: "+materia.getIdMateria());
+//               System.out.println("nombre: "+materia.getNombre());
+//               System.out.println("año: "+materia.getAnio());
+//           }
 
 
 //        AlumnoData alu=new AlumnoData();
@@ -60,6 +67,13 @@ public class UniversidadGrupo49 {
 //       alu.ModificarAlumno(x1);
 
 
+
+
+    Inscripcion i=new Inscripcion(x1, m2);
+    
+    InscripcionData ins=new InscripcionData();
+    
+    ins.guardarInscripcion(i);
 
 
 
