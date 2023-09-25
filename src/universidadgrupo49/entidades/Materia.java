@@ -7,6 +7,8 @@ public class Materia {
     private String nombre;
     private int anio;
     private boolean estado;
+    private int nota;
+    
 
     public Materia() {
     }
@@ -56,9 +58,35 @@ public class Materia {
         this.estado = estado;
     }
 
+    public Materia(int idMateria, String nombre, int anio, boolean estado, int nota) {
+        this.idMateria = idMateria;
+        this.nombre = nombre;
+        this.anio = anio;
+        this.estado = estado;
+        this.nota = nota;
+    }
+
+    public int getNota() {
+        return nota;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
+    }
+    
+    
+    
+    
+    
+    
+
     @Override
+//    public String toString() {
+//        return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", anio=" + anio + ", estado=" + estado + '}';
+//    }
+    
     public String toString() {
-        return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", anio=" + anio + ", estado=" + estado + '}';
+        return "Id: " + idMateria + " // Nombre: " + nombre + " // Año: " + anio +'}';
     }
 
 }

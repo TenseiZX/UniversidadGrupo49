@@ -17,14 +17,14 @@ public class UniversidadGrupo49 {
         Connection con = Conexion.getConexion();
         
         
-        Alumno x1=new Alumno (77777774,"diosmio","Sol",LocalDate.of(1980, 4,25),true);
-        AlumnoData alu=new AlumnoData();
-        alu.guardarAlumno(x1);
-        
-        
-        Materia m2 = new Materia("porfavor", 1, true);
-        MateriaData mat = new MateriaData();
-        mat.guardarMateria(m2);
+//        Alumno x1=new Alumno (1111113,"lkkkkkk","Sol",LocalDate.of(1980, 4,25),true);
+//        AlumnoData alu=new AlumnoData();
+//        alu.guardarAlumno(x1);
+//        
+//        
+//        Materia m2 = new Materia("arreglarporfavor99", 1, true);
+//        MateriaData mat = new MateriaData();
+//        mat.guardarMateria(m2);
 
 //        Materia materiaEncontrada=mat.buscarMateria(1);
 //        System.out.println("nombre: "+materiaEncontrada.getNombre());
@@ -69,11 +69,31 @@ public class UniversidadGrupo49 {
 
 
 
-    Inscripcion i=new Inscripcion(x1, m2);
-    
-    InscripcionData ins=new InscripcionData();
-    
-    ins.guardarInscripcion(i);
+//    Inscripcion i=new Inscripcion(x1, m2);
+//    
+//    InscripcionData ins=new InscripcionData();
+//    
+//    ins.guardarInscripcion(i);
+
+
+
+//Alumno x=new Alumno();
+//Materia m=new Materia();
+//
+//InscripcionData id=new InscripcionData();
+//AlumnoData alu=new AlumnoData();
+//MateriaData mat=new MateriaData();
+//
+//Alumno keko= alu.buscarAlumno(x.getIdAlumno());
+//Materia kako= mat.buscarMateria(m.getIdMateria());
+//
+//Inscripcion inscrip=new Inscripcion(keko, kako, 9);
+//
+//for(Inscripcion inscripcion:id.obtenerInscripciones()){
+//    System.out.println("id "+inscripcion.getIdInscripto());
+//    System.out.println("apellido "+inscripcion.getAlumno().getApellido());
+//    System.out.println("Materia "+inscripcion.getMateria().getNombre());
+//}
 
 
 

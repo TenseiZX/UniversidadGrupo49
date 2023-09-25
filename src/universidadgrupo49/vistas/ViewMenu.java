@@ -4,6 +4,7 @@
  */
 package universidadgrupo49.vistas;
 
+import javax.swing.JOptionPane;
 import universidadgrupo49.accesoADatos.AlumnoData;
 import universidadgrupo49.accesoADatos.MateriaData;
 
@@ -43,6 +44,7 @@ public class ViewMenu extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,6 +121,15 @@ public class ViewMenu extends javax.swing.JFrame {
                 jMenu5ActionPerformed(evt);
             }
         });
+
+        jMenuItem6.setText("Cerrar Administrador");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem6);
+
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
@@ -138,7 +149,12 @@ public class ViewMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        AlumnoPorMateria apm=new AlumnoPorMateria();
+        apm.setVisible(true);
+        escritorio.add(apm);
+        escritorio.moveToFront(apm);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -184,6 +200,16 @@ public class ViewMenu extends javax.swing.JFrame {
         escritorio.add(mn);
         escritorio.moveToFront(mn);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    
+        int msj=JOptionPane.showConfirmDialog(this,"estas seguro que desea eliminar este alumno?");
+        
+        if(msj==0){
+        this.dispose();
+        }
+     
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,5 +259,6 @@ public class ViewMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     // End of variables declaration//GEN-END:variables
 }

@@ -283,6 +283,8 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         
         int fila=tablaMaterias.getSelectedRow();
         
+        
+        
         if (fila>=0){
         
             data.anularInscripcion(alu.getIdAlumno(), Integer.parseInt(tablaMaterias.getValueAt(fila,0).toString()));
