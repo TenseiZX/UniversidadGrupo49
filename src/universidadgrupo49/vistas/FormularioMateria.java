@@ -42,6 +42,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         jrbEstado = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
         jbLimpiar = new javax.swing.JButton();
+        jbBuscar = new javax.swing.JButton();
 
         jtTablaMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,8 +77,6 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         jLabel3.setText("Año:");
 
         jLabel4.setText("Estado:");
-
-        jtID.setEditable(false);
 
         jbEliminar.setText("Eliminar");
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +115,13 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
             }
         });
 
+        jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,7 +146,9 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
                                         .addComponent(jtAnio, javax.swing.GroupLayout.Alignment.LEADING))
                                     .addComponent(jrbEstado)))
                             .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jbBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(67, 67, 67)
                         .addComponent(jbGuardar)
@@ -160,14 +168,15 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel6)
-                .addGap(16, 16, 16)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41)
+                            .addComponent(jtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbBuscar))
+                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -191,7 +200,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(17, 17, 17)
                                 .addComponent(jbLimpiar)))))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         pack();
@@ -286,6 +295,50 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         jrbEstado.setSelected(false);
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        
+        
+        
+        try {
+        
+        if (jtID.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "el campo esta vacio");
+           
+        } else {
+            
+        
+            Materia materia = md.buscarMateria(Integer.parseInt(jtID.getText()));
+            jtNombre.setText(materia.getNombre());
+            jtAnio.setText(materia.getAnio()+"");
+            jrbEstado.setSelected(materia.isEstado());
+            
+        }
+       
+        
+        } catch (NullPointerException ex){
+        
+         
+            
+            JOptionPane.showMessageDialog(this,"El id de la materia no existe en la base de datos");
+        
+        
+        
+        
+        }
+        
+        
+        
+         
+        
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void metodoLimpiar(){
+    jtID.setText("");
+        jtAnio.setText("");
+        jtNombre.setText("");
+        jrbEstado.setSelected(false);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -294,6 +347,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbLimpiar;

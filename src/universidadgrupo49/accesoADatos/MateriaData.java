@@ -68,6 +68,7 @@ public class MateriaData {
 
             } else {
                 JOptionPane.showMessageDialog(null, "id de la materia no existe");
+             ps.close();
             }
 
             ps.close();//cierro
@@ -157,7 +158,7 @@ public class MateriaData {
         
         jtTablaMateria.setModel(modelo);
         
-        sql="select * from materia;";
+        sql="select * from materia where estado=1;";
         
         String [] datos =new String[4];
         

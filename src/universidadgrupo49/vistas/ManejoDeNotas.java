@@ -66,7 +66,6 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
         jtablaMaterias = new javax.swing.JTable();
         jbGuardar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
-        jbConfirmar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setText("Seleccione un alumno");
@@ -118,13 +117,6 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
             }
         });
 
-        jbConfirmar.setText("Confirmar");
-        jbConfirmar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbConfirmarActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Manejo de notas");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -134,24 +126,24 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 691, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(308, 308, 308)
-                        .addComponent(jbGuardar)
-                        .addGap(157, 157, 157)
-                        .addComponent(jbSalir))
+                        .addGap(45, 45, 45)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jLabel1)
-                        .addGap(116, 116, 116)
-                        .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jbConfirmar))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(116, 116, 116)
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(412, 412, 412)
-                        .addComponent(jLabel2)))
-                .addContainerGap(119, Short.MAX_VALUE))
+                        .addGap(162, 162, 162)
+                        .addComponent(jbGuardar)
+                        .addGap(190, 190, 190)
+                        .addComponent(jbSalir)))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,26 +153,27 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbConfirmar))
+                    .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbGuardar)
                     .addComponent(jbSalir))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -192,6 +185,25 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
 
     private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
 
+        if (jcbAlumnos.getSelectedIndex() > 0) {
+            
+            modelo.getDataVector().removeAllElements();
+            jtablaMaterias.updateUI();
+            
+            alu = (Alumno) jcbAlumnos.getSelectedItem();
+            
+            List<Materia> materias = new ArrayList<>();
+            
+            materias = data.obtenerMateriasCursadasConNota(alu.getIdAlumno());
+            
+            for (Materia materia : materias) {
+                modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(), materia.getAnio(), materia.getNota()});
+                
+            }
+            
+        }
+        
+        
 
     }//GEN-LAST:event_jcbAlumnosActionPerformed
 
@@ -221,35 +233,6 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jcbAlumnosMousePressed
 
-
-    private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
-
-//        alu = (Alumno) jcbAlumnos.getSelectedItem();
-//        
-//        List<Inscripcion> inscripciones = new ArrayList<>();
-//
-//        inscripciones = data.obtenerInscripciones();
-//
-//        for (Inscripcion inscripcion : inscripciones) {
-//
-//    //            modelo.addRow(new Object[]{inscripcion.getMateria().getIdMateria(),inscripcion.getMateria().getNombre(),inscripcion.getMateria().getAnio(),inscripcion.getNota()});
-//              
-//                  modelo.addRow(new Object[]{inscripcion.getIdInscripto(),inscripcion.getAlumno().getIdAlumno(),inscripcion.getMateria().getIdMateria(),inscripcion.getNota()});
-//        }
-        modelo.getDataVector().removeAllElements();
-        jtablaMaterias.updateUI();
-
-        alu = (Alumno) jcbAlumnos.getSelectedItem();
-
-        List<Materia> materias = new ArrayList<>();
-        materias = data.obtenerMateriasCursadasConNota(alu.getIdAlumno());
-
-        for (Materia materia : materias) {
-            modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(), materia.getAnio(), materia.getNota()});
-        }
-
-
-    }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
 
@@ -291,8 +274,15 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
 
     private void cargarComboAlumno() {
 
+        Alumno alum=new Alumno();
+        alum.setNombre("Seleccione un alumno");
+        alum.setIdAlumno(0);
+        alum.setApellido("");
+        
         AlumnoData ad = new AlumnoData();
         List<Alumno> alumnos = ad.listarAlumnos();
+        jcbAlumnos.addItem(alum);
+        
 
         for (Alumno alumno : alumnos) {
             jcbAlumnos.addItem(alumno);
@@ -317,7 +307,6 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbConfirmar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<Alumno> jcbAlumnos;

@@ -336,16 +336,21 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
         if (jtDocumentodni.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "el campo esta vacio");
+        
         } else {
             Alumno alumno = ad.buscarAlumnoPorDni(Integer.parseInt(jtDocumentodni.getText()));
             jtNombre.setText(alumno.getNombre());
             jtApellido.setText(alumno.getApellido());
+            jrbEstado.setSelected(alumno.isActivo());
             jtcampofecha.setText(alumno.getFechaNacimiento() + "");
             jtid.setText(alumno.getIdAlumno()+ ""); //probando
             Instant fecha;
             jdcFechaNac.setDateFormatString(alumno.getFechaNacimiento().toString());
+            
 
         }
+        
+        
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //        AlumnoData aludata = new AlumnoData();
 //        Alumno alumno = aludata.buscarAlumnoPorDni(Integer.parseInt(jtDocumentodni.getText()));

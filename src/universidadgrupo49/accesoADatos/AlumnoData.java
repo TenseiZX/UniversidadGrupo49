@@ -41,13 +41,16 @@ public class AlumnoData {
             ps.executeUpdate();
 
             rs = ps.getGeneratedKeys();//genera una sola fila
+            
+            
             if (rs.next()) {
                 alumno.setIdAlumno(rs.getInt(1));//
                 JOptionPane.showMessageDialog(null, "Alumno Guardado");
             }
             ps.close();//cierro
+            
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno DESDE METODO GUARDAR ALUMNO");
         }
 
     }
@@ -187,7 +190,7 @@ public class AlumnoData {
         
         tablaAlumno.setModel(modelo);
         
-        sql="select * from alumno;";
+        sql="select * from alumno where estado=1;";
         
         String [] datos =new String[6];
         

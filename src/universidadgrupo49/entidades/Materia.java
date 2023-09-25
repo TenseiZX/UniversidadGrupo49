@@ -86,7 +86,7 @@ public class Materia {
 //    }
     
     public String toString() {
-        return "Id: " + idMateria + " // Nombre: " + nombre + " // Año: " + anio +'}';
+        return nombre+" , "+anio;
     }
 
 }
