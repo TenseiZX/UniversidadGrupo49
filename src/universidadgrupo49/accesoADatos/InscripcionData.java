@@ -203,7 +203,7 @@ public class InscripcionData {
     public List<Materia> obtenerMateriasCursadasConNota(int id) {
         List<Materia> materias = new ArrayList<Materia>();
 
-        String sql = "SELECT inscripcion.idMateria, nombre, anio, inscripcion.nota FROM inscripcion "
+        String sql = "SELECT inscripcion.idMateria, nombre, anio, nota FROM inscripcion "
                 + "JOIN materia ON(inscripcion.idMateria = materia.idMateria) WHERE inscripcion.idAlumno = ? and estado=1";
         try {
 

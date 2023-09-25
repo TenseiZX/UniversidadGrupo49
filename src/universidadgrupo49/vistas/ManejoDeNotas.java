@@ -25,7 +25,6 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
     MateriaData md;
     DefaultTableModel modelo = new DefaultTableModel();
 
-
 //    DefaultTableModel modelo=new DefaultTableModel(){
 //        
 //        boolean[] canEdit = new boolean [] {
@@ -37,9 +36,6 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
 //            }
 //        
 //    };
-    
-    
-
     public ManejoDeNotas() {
         initComponents();
         cargarComboAlumno();
@@ -71,6 +67,7 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
         jbGuardar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
         jbConfirmar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setText("Seleccione un alumno");
 
@@ -128,12 +125,22 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel2.setText("Manejo de notas");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 691, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(308, 308, 308)
+                        .addComponent(jbGuardar)
+                        .addGap(157, 157, 157)
+                        .addComponent(jbSalir))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jLabel1)
@@ -142,19 +149,16 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
                         .addGap(29, 29, 29)
                         .addComponent(jbConfirmar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 691, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(308, 308, 308)
-                        .addComponent(jbGuardar)
-                        .addGap(157, 157, 157)
-                        .addComponent(jbSalir)))
+                        .addGap(412, 412, 412)
+                        .addComponent(jLabel2)))
                 .addContainerGap(119, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -187,7 +191,7 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
-        
+
 
     }//GEN-LAST:event_jcbAlumnosActionPerformed
 
@@ -201,32 +205,25 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
 //        for (Materia materia : materias) {
 //            modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(), materia.getAnio()});
 //        }
-        
 
     }//GEN-LAST:event_jcbAlumnosMouseClicked
 
     private void jcbAlumnosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbAlumnosMouseEntered
-        
-        
-        
+
+
     }//GEN-LAST:event_jcbAlumnosMouseEntered
 
     private void jcbAlumnosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbAlumnosMouseReleased
-        
+
     }//GEN-LAST:event_jcbAlumnosMouseReleased
 
     private void jcbAlumnosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbAlumnosMousePressed
-        
+
     }//GEN-LAST:event_jcbAlumnosMousePressed
 
-    
-    
-    
-    
-    
-    
+
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
-        
+
 //        alu = (Alumno) jcbAlumnos.getSelectedItem();
 //        
 //        List<Inscripcion> inscripciones = new ArrayList<>();
@@ -239,42 +236,57 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
 //              
 //                  modelo.addRow(new Object[]{inscripcion.getIdInscripto(),inscripcion.getAlumno().getIdAlumno(),inscripcion.getMateria().getIdMateria(),inscripcion.getNota()});
 //        }
+        modelo.getDataVector().removeAllElements();
+        jtablaMaterias.updateUI();
 
         alu = (Alumno) jcbAlumnos.getSelectedItem();
-        
+
         List<Materia> materias = new ArrayList<>();
-        materias = data.obtenerMateriasCursadas(alu.getIdAlumno());
+        materias = data.obtenerMateriasCursadasConNota(alu.getIdAlumno());
 
         for (Materia materia : materias) {
-            modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(), materia.getAnio()});
+            modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(), materia.getAnio(), materia.getNota()});
         }
-        
-        
-        
 
-        
-        
-        
+
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+
+        int fila = jtablaMaterias.getSelectedRow();
         
-//        int fila=jtablaMaterias.getSelectedRow();
-//        
-//        if (fila>=-1){
+//        if (fila>=0){
 //            
 //            alu = (Alumno) jcbAlumnos.getSelectedItem();
-//        
+//            
 //            int materiaid=(Integer) modelo.getValueAt(fila, 0);
 //            
-//            data.obtenerInscripciones(ins.getNota());
+//            String nombreMat= (String) modelo.getValueAt(fila, 1);
 //            
+//            int anio=(Integer) modelo.getValueAt(fila, 2);
 //            
-//            data.actualizarNota(alu.getIdAlumno(), materiaid, fila);
+//            int nota=(Integer) modelo.getValueAt(fila, 3);
 //            
+//            Materia m=new Materia(materiaid, nombreMat, anio, true);
+//            
+//            Inscripcion i=new Inscripcion(alu, m, 0);
+//            
+//            data.actualizarNota(alu.getIdAlumno(), materiaid,Integer.parseInt(modelo.getValueAt(fila, 3).toString()));
+//
 //        }
         
+        if (fila < 1) {
+            
+            JOptionPane.showMessageDialog(this, "seleccione el registro a modificar antes de presionar el boton guardar");
+
+        }else{
         
+        alu = (Alumno) jcbAlumnos.getSelectedItem();
+        
+        data.actualizarNota(alu.getIdAlumno(), (Integer)jtablaMaterias.getValueAt(fila, 0), Integer.parseInt(jtablaMaterias.getValueAt(fila, 3).toString()));
+        }
+        
+
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void cargarComboAlumno() {
@@ -285,18 +297,14 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
         for (Alumno alumno : alumnos) {
             jcbAlumnos.addItem(alumno);
         }
-        
 
     }
-    
-    
-  
 
     private void armarCabecera() {
 
-        modelo.addColumn("id");
-        modelo.addColumn("nombre");
-        modelo.addColumn("anio");
+        modelo.addColumn("Id");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Año");
         modelo.addColumn("Nota");
 
         jtablaMaterias.setModel(modelo);
@@ -306,6 +314,7 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbConfirmar;

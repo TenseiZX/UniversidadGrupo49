@@ -48,6 +48,7 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         jbAnular = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setText("Alumno");
 
@@ -114,6 +115,8 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel3.setText("Manejo de inscripciones");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -144,13 +147,18 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
                         .addComponent(jButton3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(434, 434, 434)
-                        .addComponent(jbLimpiar)))
+                        .addComponent(jbLimpiar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(420, 420, 420)
+                        .addComponent(jLabel3)))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jcbAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -362,6 +370,7 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAnular;

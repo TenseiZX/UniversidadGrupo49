@@ -157,9 +157,13 @@ public class AlumnoPorMateria extends javax.swing.JInternalFrame {
 
         alumnos= data.obtenerAlumnosXMateria(mat.getIdMateria());
 
+//        modelo.getDataVector().removeAllElements();
+//        jtablaMaterias.updateUI();
         
         for (Alumno alumno : alumnos) {
             modelo.addRow(new Object[]{alumno.getIdAlumno(),alumno.getDni(),alumno.getApellido(),alumno.getNombre()});
+            
+            
         }
 
         
