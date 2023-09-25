@@ -216,7 +216,9 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         
-       int cambiarAInactivo=Integer.parseInt(jtID.getText());
+        try{
+        
+        int cambiarAInactivo=Integer.parseInt(jtID.getText());
         
         int msj=JOptionPane.showConfirmDialog(this,"estas seguro que desea eliminar este alumno?");
         
@@ -232,7 +234,9 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         }
         
         
-        
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "campos vacios");
+        }
         
         
         

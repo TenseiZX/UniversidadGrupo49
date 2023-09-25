@@ -6,6 +6,7 @@ package universidadgrupo49.vistas;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import universidadgrupo49.accesoADatos.AlumnoData;
 import universidadgrupo49.accesoADatos.InscripcionData;
@@ -14,21 +15,21 @@ import universidadgrupo49.entidades.Alumno;
 import universidadgrupo49.entidades.Materia;
 
 public class AlumnoPorMateria extends javax.swing.JInternalFrame {
-
+    
     AlumnoData ad;
     Alumno alu;
     Materia mat;
     InscripcionData data;
     MateriaData md;
     DefaultTableModel modelo = new DefaultTableModel();
-
+    
     public AlumnoPorMateria() {
         initComponents();
         armarCabecera();
         cargarComboAlumno();
-
+        
         data = new InscripcionData();
-
+        
     }
 
     /**
@@ -50,6 +51,12 @@ public class AlumnoPorMateria extends javax.swing.JInternalFrame {
         jbConfirmar = new javax.swing.JButton();
 
         jLabel1.setText("Seleccione una materia");
+
+        jcbMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMateriasActionPerformed(evt);
+            }
+        });
 
         jtablaMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -146,55 +153,82 @@ public class AlumnoPorMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
-
+        
         modelo.getDataVector().removeAllElements();
         jtablaMaterias.updateUI();
         
-        
         mat = (Materia) jcbMaterias.getSelectedItem();
-      
+        
         List<Alumno> alumnos = new ArrayList<>();
-
-        alumnos= data.obtenerAlumnosXMateria(mat.getIdMateria());
-
-//        modelo.getDataVector().removeAllElements();
-//        jtablaMaterias.updateUI();
+        
+        alumnos = data.obtenerAlumnosXMateria(mat.getIdMateria());
         
         for (Alumno alumno : alumnos) {
-            modelo.addRow(new Object[]{alumno.getIdAlumno(),alumno.getDni(),alumno.getApellido(),alumno.getNombre()});
-            
+            modelo.addRow(new Object[]{alumno.getIdAlumno(), alumno.getDni(), alumno.getApellido(), alumno.getNombre()});
             
         }
-
         
-
 
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
+    private void jcbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMateriasActionPerformed
+        
+        if (jcbMaterias.getSelectedIndex() > 0) {
+            
+            modelo.getDataVector().removeAllElements();
+            jtablaMaterias.updateUI();
+            
+            mat = (Materia) jcbMaterias.getSelectedItem();
+            
+            List<Alumno> alumnos = new ArrayList<>();
+            
+            alumnos = data.obtenerAlumnosXMateria(mat.getIdMateria());
+            
+            for (Alumno alumno : alumnos) {
+                modelo.addRow(new Object[]{alumno.getIdAlumno(), alumno.getDni(), alumno.getApellido(), alumno.getNombre()});
+                
+            }
+            
+        }
+        
 
-    
-    
+    }//GEN-LAST:event_jcbMateriasActionPerformed
     
     private void cargarComboAlumno() {
 
-        MateriaData md = new MateriaData();
-        List<Materia> materias = md.listarMaterias();
-
+//        MateriaData md = new MateriaData();
+//        List<Materia> materias = md.listarMaterias();
+//        
+//
+//        for (Materia materia : materias) {
+//            jcbMaterias.addItem(materia);
+//        }
+        
+        try{
+        Materia mat=new Materia();
+        mat.setNombre("Seleccione la materia");
+        MateriaData md= new MateriaData();
+        List<Materia> materias=md.listarMaterias();
+        jcbMaterias.addItem(mat);
         for (Materia materia : materias) {
+            
             jcbMaterias.addItem(materia);
         }
-
+        
+        } catch (NullPointerException ex) {
+        JOptionPane.showMessageDialog(null,"error" +ex);
+        }
     }
-
+    
     private void armarCabecera() {
-
+        
         modelo.addColumn("id");
         modelo.addColumn("dni");
         modelo.addColumn("apellido");
         modelo.addColumn("nombre");
-
+        
         jtablaMaterias.setModel(modelo);
-
+        
     }
 
 

@@ -93,6 +93,11 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                 jtDocumentodniActionPerformed(evt);
             }
         });
+        jtDocumentodni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtDocumentodniKeyReleased(evt);
+            }
+        });
 
         jtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +115,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         });
 
         jbGuardar.setText("Guardar");
+        jbGuardar.setEnabled(false);
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGuardarActionPerformed(evt);
@@ -383,6 +389,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         
+        try {
         int cambiarAInactivo=Integer.parseInt(jtDocumentodni.getText());
         if(ad.buscarAlumnoPorDni(cambiarAInactivo)!=null){
         int msj=JOptionPane.showConfirmDialog(this,"estas seguro que desea eliminar este alumno?");
@@ -396,9 +403,13 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jtcampofecha.setText("");
         jdcFechaNac.setCalendar(null);//seteo a vacio
         jrbEstado.setSelected(false);//seteo a vacio
-        }
+        } 
         
         }
+        
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "campos vacios");
+        } 
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
@@ -469,6 +480,16 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jdcFechaNac.setCalendar(null);//seteo a vacio
         jrbEstado.setSelected(false);//seteo a vacio
     }//GEN-LAST:event_jbLimpiarActionPerformed
+
+    private void jtDocumentodniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDocumentodniKeyReleased
+        if(!jtDocumentodni.getText().isEmpty()){
+            
+            jbGuardar.setEnabled(true);
+            
+        } else {
+            jbGuardar.setEnabled(false);
+        }
+    }//GEN-LAST:event_jtDocumentodniKeyReleased
 
 
     

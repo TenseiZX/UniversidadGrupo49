@@ -2,6 +2,7 @@ package universidadgrupo49.vistas;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import universidadgrupo49.accesoADatos.AlumnoData;
 import universidadgrupo49.accesoADatos.InscripcionData;
@@ -198,7 +199,7 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         
         
         
-        
+        try {
         
         int fila=tablaMaterias.getSelectedRow();
         
@@ -217,16 +218,28 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
             Inscripcion i=new Inscripcion(alu,m,0);
             data.guardarInscripcion(i);
             
+        }else{
+        JOptionPane.showMessageDialog(null, "Error: primero debe seleccionar una materia de la tabla que quiera inscribir");
         }
         
-       
+        }catch (ArrayIndexOutOfBoundsException ex){
+        JOptionPane.showMessageDialog(null,"Error SQL: debe seleecionar una materia antes de Inscribirla");
+        }
+        
+        modelo.getDataVector().removeAllElements();
+        tablaMaterias.updateUI();
+        jrNoinscriptas.setSelected(true);
+        cargarNoCursadas();
         
         
         
     }//GEN-LAST:event_jbInscribirActionPerformed
 
     private void jcbAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnoActionPerformed
-
+modelo.getDataVector().removeAllElements();
+        tablaMaterias.updateUI();
+        jrNoinscriptas.setSelected(false);
+        jrInscriptas.setSelected(false);
     }//GEN-LAST:event_jcbAlumnoActionPerformed
 
     private void jrInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrInscriptasActionPerformed
@@ -287,6 +300,9 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
 
     private void jbAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAnularActionPerformed
         
+        
+        try {
+        
         alu = (Alumno) jcbAlumno.getSelectedItem();
         
         int fila=tablaMaterias.getSelectedRow();
@@ -297,9 +313,58 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         
             data.anularInscripcion(alu.getIdAlumno(), Integer.parseInt(tablaMaterias.getValueAt(fila,0).toString()));
             
+        }else{
+        JOptionPane.showMessageDialog(null,"Error CODIGO: seleccione una inscripcion de la lista que quiera anular");
+        
         }
         
+        }catch (ArrayIndexOutOfBoundsException ex){
+        JOptionPane.showMessageDialog(null,"Error SQL: debe seleecionar una materia antes de anular la inscprcion");
+        }
+        
+        
+        
+        modelo.getDataVector().removeAllElements();
+        tablaMaterias.updateUI();
+        jrInscriptas.setSelected(true);
         cargarCursadas();
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//        alu = (Alumno) jcbAlumno.getSelectedItem();
+//        
+//        int fila=tablaMaterias.getSelectedRow();
+//        
+//        
+//        
+//        if (fila>=0){
+//        
+//            data.anularInscripcion(alu.getIdAlumno(), Integer.parseInt(tablaMaterias.getValueAt(fila,0).toString()));
+//            
+//        }
+//        
+//        
+//        
+//        
+//        
+//        modelo.getDataVector().removeAllElements();
+//        tablaMaterias.updateUI();
+          
+        
+       
         
         
         
