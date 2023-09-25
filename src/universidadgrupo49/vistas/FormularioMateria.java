@@ -271,7 +271,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         md.mostrarMaterias(jtTablaMateria);
         
         }catch (NumberFormatException ex){
-        JOptionPane.showMessageDialog(null, "error ");
+        JOptionPane.showMessageDialog(null, "error no puede haber campos vacios ");
         }catch (NullPointerException ex){
         JOptionPane.showMessageDialog(null, "no puede haber campos vacios");
         }
@@ -317,15 +317,14 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         
         } catch (NullPointerException ex){
         
-         
-            
             JOptionPane.showMessageDialog(this,"El id de la materia no existe en la base de datos");
+            metodoLimpiar();
         
+        } catch (NumberFormatException exe){
         
-        
-        
+            JOptionPane.showMessageDialog(this,"Error: los caracteres no son validos o se supero el limite de caracteres que se pueden ingresar");
+                metodoLimpiar();
         }
-        
         
         
          

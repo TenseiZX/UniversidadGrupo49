@@ -203,7 +203,7 @@ public class ViewMenu extends javax.swing.JFrame {
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
     
-        int msj=JOptionPane.showConfirmDialog(this,"estas seguro que desea eliminar este alumno?");
+        int msj=JOptionPane.showConfirmDialog(this,"¿esta seguro que desea salir del Administrador Universidad49?");
         
         if(msj==0){
         this.dispose();

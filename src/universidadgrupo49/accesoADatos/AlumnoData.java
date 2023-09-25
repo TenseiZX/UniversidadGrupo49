@@ -95,7 +95,7 @@ public class AlumnoData {
     }
 
     public Alumno buscarAlumno(int id) {//solo va a traer los alumnos activos
-        String sql = "SELECT dni,apellido,nombre,fechaNacimiento FROM alumno WHERE idAlumno= ? and estado=1";
+        String sql = "SELECT dni,apellido,nombre,fechaNacimiento FROM alumno WHERE idAlumno= ?";
 
         try {
             ps = con.prepareStatement(sql);

@@ -236,6 +236,8 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
 
+        try{
+        
         int fila = jtablaMaterias.getSelectedRow();
         
 //        if (fila>=0){
@@ -258,7 +260,7 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
 //
 //        }
         
-        if (fila < 1) {
+        if (fila < 0) {
             
             JOptionPane.showMessageDialog(this, "seleccione el registro a modificar antes de presionar el boton guardar");
 
@@ -268,7 +270,13 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
         
         data.actualizarNota(alu.getIdAlumno(), (Integer)jtablaMaterias.getValueAt(fila, 0), Integer.parseInt(jtablaMaterias.getValueAt(fila, 3).toString()));
         }
+     
         
+    }catch(NumberFormatException ex){
+JOptionPane.showMessageDialog(this, "error: se excedio el numero de caracteres o se ingresaron caracteres invalidos");
+modelo.getDataVector().removeAllElements();
+            jtablaMaterias.updateUI();
+}
 
     }//GEN-LAST:event_jbGuardarActionPerformed
 

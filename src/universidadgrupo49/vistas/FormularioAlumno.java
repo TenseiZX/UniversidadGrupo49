@@ -30,14 +30,10 @@ import universidadgrupo49.entidades.Alumno;
 public class FormularioAlumno extends javax.swing.JInternalFrame {
 
     private AlumnoData ad;
-    
-    
 
-    
-    
     public FormularioAlumno(AlumnoData ad) {
         initComponents();
-        AlumnoData objetoAlumno=new AlumnoData();
+        AlumnoData objetoAlumno = new AlumnoData();
         objetoAlumno.mostrarAlumnos(jtTablaAlumno);
         this.ad = ad;
     }
@@ -311,14 +307,14 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
 
-        
-        
         try {
-            
+
             ad.guardarAlumno(new Alumno(Integer.parseInt(jtDocumentodni.getText()), jtApellido.getText(), jtNombre.getText(), jdcFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jrbEstado.isSelected()));
             ad.mostrarAlumnos(jtTablaAlumno);
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "campos vacios");
+            JOptionPane.showMessageDialog(null, "Error: Guardar, No puede haber campos vacios");
+        } catch (NullPointerException exe) {
+            JOptionPane.showMessageDialog(this, "error al guardar, entradas duplicadas");
         }
 
         jtDocumentodni.setText("");
@@ -327,30 +323,37 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
         jdcFechaNac.setCalendar(null);//seteo a vacio
         jrbEstado.setSelected(false);//seteo a vacio
-        
-        
+
 
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
 
-        if (jtDocumentodni.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "el campo esta vacio");
-        
-        } else {
-            Alumno alumno = ad.buscarAlumnoPorDni(Integer.parseInt(jtDocumentodni.getText()));
-            jtNombre.setText(alumno.getNombre());
-            jtApellido.setText(alumno.getApellido());
-            jrbEstado.setSelected(alumno.isActivo());
-            jtcampofecha.setText(alumno.getFechaNacimiento() + "");
-            jtid.setText(alumno.getIdAlumno()+ ""); //probando
-            Instant fecha;
-            jdcFechaNac.setDateFormatString(alumno.getFechaNacimiento().toString());
-            
+        try {
 
+            if (jtDocumentodni.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Error: 'Buscar' el campo esta vacio");
+
+            } else {
+                Alumno alumno = ad.buscarAlumnoPorDni(Integer.parseInt(jtDocumentodni.getText()));
+                jtNombre.setText(alumno.getNombre());
+                jtApellido.setText(alumno.getApellido());
+                jrbEstado.setSelected(alumno.isActivo());
+                jtcampofecha.setText(alumno.getFechaNacimiento() + "");
+                jtid.setText(alumno.getIdAlumno() + ""); //probando
+                Instant fecha;
+                jdcFechaNac.setDateFormatString(alumno.getFechaNacimiento().toString());
+
+            }
+
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(this, "el dni no existe en la base de datos");
+            metodoLimpiar();
+        } catch (NumberFormatException exe) {
+            JOptionPane.showMessageDialog(this, "el DNI supero el limite de caracteres");
+            metodoLimpiar();
         }
-        
-        
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //        AlumnoData aludata = new AlumnoData();
 //        Alumno alumno = aludata.buscarAlumnoPorDni(Integer.parseInt(jtDocumentodni.getText()));
@@ -385,7 +388,6 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 //            jrbEstado.setSelected(false);
 //        }
 
-
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
@@ -393,50 +395,45 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        
+
         try {
-        int cambiarAInactivo=Integer.parseInt(jtDocumentodni.getText());
-        if(ad.buscarAlumnoPorDni(cambiarAInactivo)!=null){
-        int msj=JOptionPane.showConfirmDialog(this,"estas seguro que desea eliminar este alumno?");
-        
-        if(msj==0){
-        ad.eliminarAlumno(ad.buscarAlumnoPorDni(cambiarAInactivo).getIdAlumno());
-        ad.mostrarAlumnos(jtTablaAlumno);
-        jtDocumentodni.setText("");
-        jtApellido.setText("");
-        jtNombre.setText("");
-        jtcampofecha.setText("");
-        jdcFechaNac.setCalendar(null);//seteo a vacio
-        jrbEstado.setSelected(false);//seteo a vacio
-        } 
-        
-        }
-        
+            int cambiarAInactivo = Integer.parseInt(jtDocumentodni.getText());
+            if (ad.buscarAlumnoPorDni(cambiarAInactivo) != null) {
+                int msj = JOptionPane.showConfirmDialog(this, "estas seguro que desea eliminar este alumno?");
+
+                if (msj == 0) {
+                    ad.eliminarAlumno(ad.buscarAlumnoPorDni(cambiarAInactivo).getIdAlumno());
+                    ad.mostrarAlumnos(jtTablaAlumno);
+                    jtDocumentodni.setText("");
+                    jtApellido.setText("");
+                    jtNombre.setText("");
+                    jtcampofecha.setText("");
+                    jdcFechaNac.setCalendar(null);//seteo a vacio
+                    jrbEstado.setSelected(false);//seteo a vacio
+                }
+
+            }
+
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "campos vacios");
-        } 
+            JOptionPane.showMessageDialog(null, "Error: 'eliminar' no puede haber campos vacios");
+        }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        
-        
-        AlumnoData objetoAlumno=new AlumnoData();
-        
-        
-        
-        try{
 
+        AlumnoData objetoAlumno = new AlumnoData();
 
-        objetoAlumno.ModificarAlumno(new Alumno(Integer.parseInt(jtid.getText()),Integer.parseInt(jtDocumentodni.getText()), jtApellido.getText(), jtNombre.getText(), jdcFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jrbEstado.isSelected()));
-        
-        objetoAlumno.mostrarAlumnos(jtTablaAlumno);
-        }catch (NumberFormatException ex){
-        JOptionPane.showMessageDialog(null, "error ");
-        }catch (NullPointerException ex){
-        JOptionPane.showMessageDialog(null, "no puede haber campos vacios");
+        try {
+
+            objetoAlumno.ModificarAlumno(new Alumno(Integer.parseInt(jtid.getText()), Integer.parseInt(jtDocumentodni.getText()), jtApellido.getText(), jtNombre.getText(), jdcFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jrbEstado.isSelected()));
+
+            objetoAlumno.mostrarAlumnos(jtTablaAlumno);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Error: Numberformat no puede haber campos vacios");
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Error: Null no puede haber campos vacios");
         }
-        
-        
+
         jtDocumentodni.setText("");
         jtApellido.setText("");
         jtNombre.setText("");
@@ -444,16 +441,15 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         jdcFechaNac.setCalendar(null);//seteo a vacio
         jrbEstado.setSelected(false);//seteo a vacio
         jtid.setText("");
-        
 
-        
+
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jtTablaAlumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtTablaAlumnoMouseClicked
-        AlumnoData objetoAlumno=new AlumnoData();
-        
-        objetoAlumno.seleccionarAlumnos(jtTablaAlumno,jtid, jtDocumentodni, jtApellido, jtNombre, jtcampofecha);
-        
+        AlumnoData objetoAlumno = new AlumnoData();
+
+        objetoAlumno.seleccionarAlumnos(jtTablaAlumno, jtid, jtDocumentodni, jtApellido, jtNombre, jtcampofecha);
+
     }//GEN-LAST:event_jtTablaAlumnoMouseClicked
 
     private void jtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtidActionPerformed
@@ -461,19 +457,19 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtidActionPerformed
 
     private void jtcampofechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtcampofechaActionPerformed
-       
+
     }//GEN-LAST:event_jtcampofechaActionPerformed
 
     private void jtcampofechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtcampofechaMouseClicked
-         String fecha=jtcampofecha.getText();
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-        
+        String fecha = jtcampofecha.getText();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
         try {
-            Date date= sdf.parse(fecha);
+            Date date = sdf.parse(fecha);
             jdcFechaNac.setDate(date);
         } catch (ParseException ex) {
             Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
     }//GEN-LAST:event_jtcampofechaMouseClicked
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
@@ -487,18 +483,25 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jtDocumentodniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDocumentodniKeyReleased
-        if(!jtDocumentodni.getText().isEmpty()){
-            
+        if (!jtDocumentodni.getText().isEmpty()) {
+
             jbGuardar.setEnabled(true);
-            
+
         } else {
             jbGuardar.setEnabled(false);
         }
     }//GEN-LAST:event_jtDocumentodniKeyReleased
 
+    private void metodoLimpiar() {
+        jtDocumentodni.setText("");
+        jtApellido.setText("");
+        jtNombre.setText("");
+        jtcampofecha.setText("");
+        jdcFechaNac.setCalendar(null);//seteo a vacio
+        jrbEstado.setSelected(false);//seteo a vacio
+        jtid.setText("");
+    }
 
-    
-    
 //    private LocalDate formatoFecha(){
 //        if(jcalendario.getDate()!=null){
 //            LocalDate fecha=jcalendario.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -506,7 +509,6 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 //        }
 //        return null;
 //    }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
