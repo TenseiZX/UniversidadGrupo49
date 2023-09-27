@@ -18,7 +18,18 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
     Materia mat;
     InscripcionData data;
     MateriaData md;
-    DefaultTableModel modelo = new DefaultTableModel();
+//    DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableModel modelo=new DefaultTableModel(){
+        
+        boolean[] canEdit = new boolean [] {
+                false, false,false
+            };
+
+            public boolean isCellEditable(int row, int column) {
+                return canEdit [column];
+            }
+        
+    };
     
     public ManejoInscripciones() {
         initComponents();
@@ -50,6 +61,8 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+
+        jPanel1.setBackground(new java.awt.Color(53, 166, 136));
 
         jLabel1.setText("Alumno");
 

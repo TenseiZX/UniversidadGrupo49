@@ -56,9 +56,10 @@ public class ViewMenu extends javax.swing.JFrame {
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGap(0, 716, Short.MAX_VALUE)
         );
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo49/imagenes/alumno3535.png"))); // NOI18N
         jMenu1.setText("Alumno");
 
         jMenuItem1.setText("Formulario de alumno");
@@ -71,6 +72,7 @@ public class ViewMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo49/imagenes/materia3535.png"))); // NOI18N
         jMenu2.setText("Materia");
 
         jMenuItem2.setText("Formulario de materia");
@@ -83,6 +85,7 @@ public class ViewMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo49/imagenes/Administracion3030.png"))); // NOI18N
         jMenu3.setText("Administracion");
 
         jMenuItem3.setText("Manejo de inscripciones");
@@ -103,6 +106,7 @@ public class ViewMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo49/imagenes/consulta3030.png"))); // NOI18N
         jMenu4.setText("Consultas");
 
         jMenuItem5.setText("Alumno por materia");
@@ -115,6 +119,7 @@ public class ViewMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo49/imagenes/salida3535.png"))); // NOI18N
         jMenu5.setText("Salir");
         jMenu5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,7 +147,9 @@ public class ViewMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();

@@ -17,7 +17,7 @@ public class MateriaData {
     private Connection con = null;
     PreparedStatement ps;
     ResultSet rs;
-    Materia materia = null;
+//    Materia materia = null;
     ArrayList<Materia> materias = new ArrayList<>();
 
     public MateriaData() {
@@ -44,7 +44,7 @@ public class MateriaData {
             ps.close();//cierro
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error");
+            JOptionPane.showMessageDialog(null, "error entrada duplicada");
         }
 
     }
@@ -54,6 +54,8 @@ public class MateriaData {
         String sql = "select nombre,anio,estado from materia where idMateria=? "
                 + "and estado=1";
 
+        Materia materia=null;
+        
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -67,10 +69,12 @@ public class MateriaData {
                 materia.setEstado(true);
 
             } else {
-                JOptionPane.showMessageDialog(null, "id de la materia no existe");
-             ps.close();
+                JOptionPane.showMessageDialog(null, "id de la materia no existe SQL");
+                
+                
+                
             }
-
+            
             ps.close();//cierro
 
         } catch (SQLException ex) {
@@ -146,7 +150,13 @@ public class MateriaData {
     
     public void mostrarMaterias(JTable jtTablaMateria){
         
-        DefaultTableModel modelo=new DefaultTableModel();
+        DefaultTableModel modelo=new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int i, int i1) {
+                return false; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+            }
+        
+        };
         
         String sql="";
         

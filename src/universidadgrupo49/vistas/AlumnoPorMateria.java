@@ -21,7 +21,18 @@ public class AlumnoPorMateria extends javax.swing.JInternalFrame {
     Materia mat;
     InscripcionData data;
     MateriaData md;
-    DefaultTableModel modelo = new DefaultTableModel();
+//    DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableModel modelo=new DefaultTableModel(){
+        
+        boolean[] canEdit = new boolean [] {
+                false, false,false, false
+            };
+
+            public boolean isCellEditable(int row, int column) {
+                return canEdit [column];
+            }
+        
+    };
     
     public AlumnoPorMateria() {
         initComponents();
@@ -48,6 +59,8 @@ public class AlumnoPorMateria extends javax.swing.JInternalFrame {
         jtablaMaterias = new javax.swing.JTable();
         jbSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+
+        jPanel1.setBackground(new java.awt.Color(53, 166, 136));
 
         jLabel1.setText("Seleccione una materia");
 

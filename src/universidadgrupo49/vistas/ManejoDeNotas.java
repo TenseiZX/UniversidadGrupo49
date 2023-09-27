@@ -23,19 +23,19 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
     Inscripcion ins;
     InscripcionData data;
     MateriaData md;
-    DefaultTableModel modelo = new DefaultTableModel();
+//    DefaultTableModel modelo = new DefaultTableModel();
 
-//    DefaultTableModel modelo=new DefaultTableModel(){
-//        
-//        boolean[] canEdit = new boolean [] {
-//                false, false,false, true
-//            };
-//
-//            public boolean isCellEditable(int row, int column) {
-//                return canEdit [column];
-//            }
-//        
-//    };
+    DefaultTableModel modelo=new DefaultTableModel(){
+        
+        boolean[] canEdit = new boolean [] {
+                false, false,false, true
+            };
+
+            public boolean isCellEditable(int row, int column) {
+                return canEdit [column];
+            }
+        
+    };
     public ManejoDeNotas() {
         initComponents();
         cargarComboAlumno();
@@ -67,6 +67,8 @@ public class ManejoDeNotas extends javax.swing.JInternalFrame {
         jbGuardar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+
+        jPanel1.setBackground(new java.awt.Color(53, 166, 136));
 
         jLabel1.setText("Seleccione un alumno");
 

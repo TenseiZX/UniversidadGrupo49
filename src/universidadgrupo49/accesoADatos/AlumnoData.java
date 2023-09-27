@@ -20,7 +20,7 @@ public class AlumnoData {
     private Connection con = null;
     PreparedStatement ps;
     ResultSet rs;
-    Alumno alumno = null;
+//    Alumno alumno = null;
     ArrayList<Alumno> alumnos = new ArrayList<>();//lista vacia de alumnos 
 
     public AlumnoData() {
@@ -50,13 +50,13 @@ public class AlumnoData {
             ps.close();//cierro
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno DESDE METODO GUARDAR ALUMNO");
+            JOptionPane.showMessageDialog(null, "ESTE ALUMNO YA EXISTE EN LA BASE DE DATOS");
         }
 
     }
 
     public void ModificarAlumno(Alumno alumno) {
-        String sql = "UPDATE alumno SET dni=?,apellido=?, nombre=?,fechaNacimiento=?,estado=? WHERE idAlumno=? ";
+        String sql = "UPDATE alumno SET dni=?,apellido=?, nombre=?,fechaNacimiento=? WHERE idAlumno=? ";
 
         try {
             ps = con.prepareStatement(sql);
@@ -64,8 +64,8 @@ public class AlumnoData {
             ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
             ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));//por que es del tipo de fecha
-            ps.setInt(6, alumno.getIdAlumno());//por q es boolean se genera como is
-            ps.setBoolean(5, alumno.isActivo());
+            ps.setInt(5, alumno.getIdAlumno());
+//            ps.setBoolean(5, alumno.isActivo());
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Alumno modificado exitosamente");
@@ -96,7 +96,7 @@ public class AlumnoData {
 
     public Alumno buscarAlumno(int id) {//solo va a traer los alumnos activos
         String sql = "SELECT dni,apellido,nombre,fechaNacimiento FROM alumno WHERE idAlumno= ?";
-
+        Alumno alumno=null;
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -121,9 +121,9 @@ public class AlumnoData {
     }
 
     public Alumno buscarAlumnoPorDni(int dni) {
-        String sql = "SELECT idAlumno,dni,apellido,nombre,fechaNacimiento FROM alumno WHERE dni=?";
+        String sql = "SELECT idAlumno,dni,apellido,nombre,fechaNacimiento FROM alumno WHERE dni=? and estado=1";
                 
-
+        Alumno alumno=null;
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, dni);
@@ -177,7 +177,13 @@ public class AlumnoData {
     
     public void mostrarAlumnos(JTable tablaAlumno){
         
-        DefaultTableModel modelo=new DefaultTableModel();
+        DefaultTableModel modelo=new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int i, int i1) {
+                return false; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+            }
+        
+        };
         
         String sql="";
         

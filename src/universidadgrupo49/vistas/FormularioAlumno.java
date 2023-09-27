@@ -30,6 +30,7 @@ import universidadgrupo49.entidades.Alumno;
 public class FormularioAlumno extends javax.swing.JInternalFrame {
 
     private AlumnoData ad;
+//    private Alumno alumnoActual = null;  /////////////probando el metodo buscar del pelado con jdate chooser
 
     public FormularioAlumno(AlumnoData ad) {
         initComponents();
@@ -47,110 +48,38 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtTablaAlumno = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jtDocumentodni = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jbBuscar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jtApellido = new javax.swing.JTextField();
         jtNombre = new javax.swing.JTextField();
-        jrbEstado = new javax.swing.JRadioButton();
+        jLabel4 = new javax.swing.JLabel();
+        jbModificar = new javax.swing.JButton();
         jdcFechaNac = new com.toedter.calendar.JDateChooser();
-        jbBuscar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jrbEstado = new javax.swing.JRadioButton();
         jbGuardar = new javax.swing.JButton();
         jbEliminar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
-        jtcampofecha = new javax.swing.JTextField();
-        jbModificar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtTablaAlumno = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
-        jtid = new javax.swing.JTextField();
         jbLimpiar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jtID = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(204, 255, 255));
+        setTitle("Seccción alumnos");
         setMinimumSize(new java.awt.Dimension(44, 22));
 
-        jLabel1.setText("Formulario de alumno");
+        jPanel1.setBackground(new java.awt.Color(53, 166, 136));
 
-        jLabel2.setText("DNI:");
-
-        jLabel3.setText("Apellido:");
-
-        jLabel4.setText("Nombre:");
-
-        jLabel5.setText("Estado");
-
-        jLabel6.setText("Fecha de nacimiento:");
-
-        jtDocumentodni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtDocumentodniActionPerformed(evt);
-            }
-        });
-        jtDocumentodni.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jtDocumentodniKeyReleased(evt);
-            }
-        });
-
-        jtApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtApellidoActionPerformed(evt);
-            }
-        });
-
-        jdcFechaNac.setDateFormatString("yyyy-MM-dd");
-
-        jbBuscar.setText("Buscar");
-        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbBuscarActionPerformed(evt);
-            }
-        });
-
-        jbGuardar.setText("Guardar");
-        jbGuardar.setEnabled(false);
-        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbGuardarActionPerformed(evt);
-            }
-        });
-
-        jbEliminar.setText("Eliminar");
-        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbEliminarActionPerformed(evt);
-            }
-        });
-
-        jbSalir.setText("Salir");
-        jbSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSalirActionPerformed(evt);
-            }
-        });
-
-        jtcampofecha.setEditable(false);
-        jtcampofecha.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtcampofechaMouseClicked(evt);
-            }
-        });
-        jtcampofecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtcampofechaActionPerformed(evt);
-            }
-        });
-
-        jbModificar.setText("Modificar:");
-        jbModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbModificarActionPerformed(evt);
-            }
-        });
-
+        jtTablaAlumno.setBackground(new java.awt.Color(255, 255, 255));
+        jtTablaAlumno.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jtTablaAlumno.setForeground(new java.awt.Color(0, 0, 0));
         jtTablaAlumno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -169,15 +98,82 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jtTablaAlumno);
 
-        jLabel7.setText("ID:");
+        jLabel1.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
+        jLabel1.setText("Formulario de alumno");
 
-        jtid.setEditable(false);
-        jtid.addActionListener(new java.awt.event.ActionListener() {
+        jtDocumentodni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtidActionPerformed(evt);
+                jtDocumentodniActionPerformed(evt);
+            }
+        });
+        jtDocumentodni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtDocumentodniKeyReleased(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jLabel2.setText("DNI:");
+
+        jbBuscar.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jLabel3.setText("Apellido:");
+
+        jtApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtApellidoActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jLabel4.setText("Nombre:");
+
+        jbModificar.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jbModificar.setText("Modificar:");
+        jbModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbModificarActionPerformed(evt);
+            }
+        });
+
+        jdcFechaNac.setDateFormatString("yyyy-MM-dd");
+
+        jLabel5.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jLabel5.setText("Estado:");
+
+        jbGuardar.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jbGuardar.setText("Guardar");
+        jbGuardar.setEnabled(false);
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
+
+        jbEliminar.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
+
+        jbSalir.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
+
+        jbLimpiar.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         jbLimpiar.setText("Limpiar");
         jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,210 +181,146 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jLabel6.setText("Fecha de nacimiento:");
+
+        jLabel7.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        jLabel7.setText("ID:");
+
+        jtID.setEditable(false);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(20, 20, 20)
+                                .addComponent(jdcFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel7))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGap(18, 18, 18)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jtDocumentodni, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                    .addComponent(jLabel1)
+                                                    .addGap(26, 26, 26))
+                                                .addComponent(jtID, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addGap(20, 20, 20)
+                                                .addComponent(jrbEstado)
+                                                .addGap(107, 107, 107))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jbEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jbModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jbGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                            .addComponent(jbLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(24, 24, 24))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jtDocumentodni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbBuscar))
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jdcFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jrbEstado)
+                            .addComponent(jLabel5))
+                        .addGap(54, 54, 54)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jbModificar)
+                            .addComponent(jbGuardar))
+                        .addGap(32, 32, 32))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbLimpiar)
+                    .addComponent(jbEliminar))
+                .addGap(30, 30, 30)
+                .addComponent(jbSalir)
+                .addGap(47, 47, 47))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(12, 12, 12)
-                                    .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jtDocumentodni, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtNombre)))
-                        .addGap(17, 17, 17)
-                        .addComponent(jbBuscar))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jdcFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addGap(23, 23, 23)
-                            .addComponent(jtcampofecha, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(16, 16, 16)
-                        .addComponent(jtid, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(34, 34, 34)
-                        .addComponent(jrbEstado))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jbGuardar)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jbModificar)
-                                        .addGap(74, 74, 74))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(105, 105, 105)
-                                .addComponent(jbSalir)))
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbLimpiar)
-                            .addComponent(jbEliminar))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jtDocumentodni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jbBuscar))
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jtcampofecha, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jbModificar)
-                                    .addComponent(jdcFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel5))
-                            .addComponent(jrbEstado))
-                        .addGap(79, 79, 79)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbGuardar)
-                            .addComponent(jbEliminar))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbSalir)
-                            .addComponent(jbLimpiar))))
-                .addGap(0, 147, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtDocumentodniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDocumentodniActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtDocumentodniActionPerformed
-
-    private void jtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtApellidoActionPerformed
-
-    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-
-        try {
-
-            ad.guardarAlumno(new Alumno(Integer.parseInt(jtDocumentodni.getText()), jtApellido.getText(), jtNombre.getText(), jdcFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jrbEstado.isSelected()));
-            ad.mostrarAlumnos(jtTablaAlumno);
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Error: Guardar, No puede haber campos vacios");
-        } catch (NullPointerException exe) {
-            JOptionPane.showMessageDialog(this, "error al guardar, entradas duplicadas");
-        }
-
+    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
+        //        jtid.setText("");
         jtDocumentodni.setText("");
         jtApellido.setText("");
         jtNombre.setText("");
-
+        jtID.setText("");
+        //        jtcampofecha.setText("");
         jdcFechaNac.setCalendar(null);//seteo a vacio
         jrbEstado.setSelected(false);//seteo a vacio
-
-
-    }//GEN-LAST:event_jbGuardarActionPerformed
-
-    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-
-        try {
-
-            if (jtDocumentodni.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Error: 'Buscar' el campo esta vacio");
-
-            } else {
-                Alumno alumno = ad.buscarAlumnoPorDni(Integer.parseInt(jtDocumentodni.getText()));
-                jtNombre.setText(alumno.getNombre());
-                jtApellido.setText(alumno.getApellido());
-                jrbEstado.setSelected(alumno.isActivo());
-                jtcampofecha.setText(alumno.getFechaNacimiento() + "");
-                jtid.setText(alumno.getIdAlumno() + ""); //probando
-                Instant fecha;
-                jdcFechaNac.setDateFormatString(alumno.getFechaNacimiento().toString());
-
-            }
-
-        } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(this, "el dni no existe en la base de datos");
-            metodoLimpiar();
-        } catch (NumberFormatException exe) {
-            JOptionPane.showMessageDialog(this, "el DNI supero el limite de caracteres");
-            metodoLimpiar();
-        }
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-//        AlumnoData aludata = new AlumnoData();
-//        Alumno alumno = aludata.buscarAlumnoPorDni(Integer.parseInt(jtDocumentodni.getText()));
-//
-//        if (!jtDocumentodni.getText().equalsIgnoreCase("")) {
-//            try {
-//
-//                if (alumno != null) {
-//                    jtApellido.setText(alumno.getApellido());
-//                    jtNombre.setText(alumno.getNombre());
-//                    jtcampofecha.setText(alumno.getFechaNacimiento() + "");
-//
-//                }
-//            } catch (NumberFormatException ex) {
-//                JOptionPane.showMessageDialog(null, "Solo puede Ingresar numeros en el campo DNI");
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(null, "no puede haber campos vacios");
-//        }
-//
-//jtDocumentodni.setText("");
-//        jtApellido.setText("");
-//        jtNombre.setText("");
-//
-//        jdcFechaNac.setCalendar(null);//seteo a vacio
-//        jrbEstado.setSelected(false);//seteo a vacio
-//
-//        boolean estado = alumno.isActivo();
-//        if (estado = true) {
-//            jrbEstado.setSelected(true);
-//        } else {
-//            jrbEstado.setSelected(false);
-//        }
-
-    }//GEN-LAST:event_jbBuscarActionPerformed
+    }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         this.dispose();
@@ -407,7 +339,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                     jtDocumentodni.setText("");
                     jtApellido.setText("");
                     jtNombre.setText("");
-                    jtcampofecha.setText("");
+                    //                    jtcampofecha.setText("");
                     jdcFechaNac.setCalendar(null);//seteo a vacio
                     jrbEstado.setSelected(false);//seteo a vacio
                 }
@@ -417,70 +349,280 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Error: 'eliminar' no puede haber campos vacios");
         }
+        
+        metodoLimpiar();
     }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+
+        //        try {
+        //
+        //            ad.guardarAlumno(new Alumno(Integer.parseInt(jtDocumentodni.getText()), jtApellido.getText(), jtNombre.getText(), jdcFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jrbEstado.isSelected()));
+        //            ad.mostrarAlumnos(jtTablaAlumno);
+        //
+        //        } catch (NumberFormatException ex) {
+        //            JOptionPane.showMessageDialog(null, "Error: Guardar, No puede haber campos vacios");
+        //        } catch (NullPointerException exe) {
+        //            JOptionPane.showMessageDialog(this, "error al guardar, entradas duplicadas");
+        //        }
+        //
+        //        jtDocumentodni.setText("");
+        //        jtApellido.setText("");
+        //        jtNombre.setText("");
+        //
+        //        jdcFechaNac.setCalendar(null);
+        //        jrbEstado.setSelected(false);
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
+        //        try{
+        //        Integer dni=Integer.parseInt(jtDocumentodni.getText());
+        //
+        //        String nombre=jtNombre.getText();
+        //        String apellido=jtApellido.getText();
+        //        if(nombre.isEmpty()||apellido.isEmpty()){
+        //        JOptionPane.showMessageDialog(this,"no puede haber campos vacios");
+        //        metodoLimpiar();
+        //        return;
+        //        }
+        //
+        //        java.util.Date sfecha=jdcFechaNac.getDate();
+        //        LocalDate fechaNac=sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        //        Boolean estado=jrbEstado.isSelected();
+        //        if(alumnoActual==null){
+        //
+        //            alumnoActual=new Alumno(dni, apellido, nombre, fechaNac, estado);
+        //            ad.guardarAlumno(alumnoActual);
+        //        }else{
+        //
+        //        alumnoActual.setDni(dni);
+        //        alumnoActual.setApellido(apellido);
+        //        alumnoActual.setNombre(nombre);
+        //        alumnoActual.setFechaNacimiento(fechaNac);
+        //        ad.ModificarAlumno(alumnoActual);
+        //        }
+        //
+        //        }catch(NumberFormatException ex){
+        //        JOptionPane.showMessageDialog(this, "debe ingresar un dni valido");
+        //        metodoLimpiar();
+        //        }
+        ////////////////////////////////////////////////////////////////////////////////
+        try {
+
+            ad.guardarAlumno(new Alumno(Integer.parseInt(jtDocumentodni.getText()), jtApellido.getText(), jtNombre.getText(), jdcFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jrbEstado.isSelected()));
+            ad.mostrarAlumnos(jtTablaAlumno);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "campos vacios");
+        }
+
+        metodoLimpiar();
+        
+        ad.mostrarAlumnos(jtTablaAlumno);
+
+    }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
 
-        AlumnoData objetoAlumno = new AlumnoData();
+        //        AlumnoData objetoAlumno = new AlumnoData();
+        //
+        //        try {
+        //
+        //            objetoAlumno.ModificarAlumno(new Alumno(Integer.parseInt(jtid.getText()), Integer.parseInt(jtDocumentodni.getText()), jtApellido.getText(), jtNombre.getText(), jdcFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jrbEstado.isSelected()));
+        //
+        //            objetoAlumno.mostrarAlumnos(jtTablaAlumno);
+        //        } catch (NumberFormatException ex) {
+        //            JOptionPane.showMessageDialog(null, "Error: Numberformat no puede haber campos vacios");
+        //        } catch (NullPointerException ex) {
+        //            JOptionPane.showMessageDialog(null, "Error: Null no puede haber campos vacios");
+        //        }
+        //
+        //        jtDocumentodni.setText("");
+        //        jtApellido.setText("");
+        //        jtNombre.setText("");
+        //        jtcampofecha.setText("");
+        //        jdcFechaNac.setCalendar(null);//seteo a vacio
+        //        jrbEstado.setSelected(false);//seteo a vacio
+        //        jtid.setText("");
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//        Alumno alumnoActual=null;
+//        try {
+//
+//            Integer dni = Integer.parseInt(jtDocumentodni.getText());
+//            String apellido = jtApellido.getText();
+//            String nombre = jtNombre.getText();
+//            if (nombre.isEmpty() || apellido.isEmpty()) {
+//
+//                JOptionPane.showMessageDialog(null, "No puede haber campos vacios ");
+//                return;
+//            }
+//            java.util.Date sfecha = jdcFechaNac.getDate();
+//            LocalDate fachaNac = sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//            Boolean estado = jrbEstado.isSelected();
+//            if (alumnoActual == null) {
+//
+//                alumnoActual = new Alumno(dni, apellido, nombre, fachaNac, estado);
+//                ad.guardarAlumno(alumnoActual);
+//            } else {
+//                alumnoActual.setDni(dni);
+//                alumnoActual.setApellido(apellido);
+//                alumnoActual.setNombre(nombre);
+//                alumnoActual.setFechaNacimiento(fachaNac);
+//                ad.ModificarAlumno(alumnoActual);
+//            }
+//
+//        } catch (NumberFormatException ex) {
+//            JOptionPane.showMessageDialog(null, "Debe ingresar un dni valido ");
+//
+//        }
+//        ad.mostrarAlumnos(jtTablaAlumno);
+//
+//        jtDocumentodni.setText("");
+//        jtApellido.setText("");
+//        jtNombre.setText("");
+//
+//        jdcFechaNac.setCalendar(null);//seteo a vacio
+//        jrbEstado.setSelected(false);//seteo a vacio
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+           try{ 
 
-        try {
+            if (!jtNombre.getText().equals("") && !jtApellido.getText().equals("") && !jtDocumentodni.getText().equals("") && !jtID.getText().equals("")&&jdcFechaNac.getDate()!=null) {
+            AlumnoData alu = new AlumnoData();
+            String nombre, apellido;
+            int dni, idalu;
+            boolean estado;
+            LocalDate fecha;
+            idalu = Integer.parseInt(jtID.getText());
+            nombre = jtNombre.getText();
+            apellido = jtApellido.getText();
+            dni = Integer.parseInt(jtDocumentodni.getText());
+            if (jrbEstado.isSelected()) {
+                estado = true;
+            } else {
+                estado = false;
+            }
+            fecha = jdcFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Alumno alumno = new Alumno(idalu, dni, apellido, nombre, fecha, estado);
+            alu.ModificarAlumno(alumno);
+        } else {
+            JOptionPane.showMessageDialog(null, "los campos deben estar cargados");
 
-            objetoAlumno.ModificarAlumno(new Alumno(Integer.parseInt(jtid.getText()), Integer.parseInt(jtDocumentodni.getText()), jtApellido.getText(), jtNombre.getText(), jdcFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jrbEstado.isSelected()));
-
-            objetoAlumno.mostrarAlumnos(jtTablaAlumno);
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Error: Numberformat no puede haber campos vacios");
-        } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "Error: Null no puede haber campos vacios");
         }
-
-        jtDocumentodni.setText("");
-        jtApellido.setText("");
-        jtNombre.setText("");
-        jtcampofecha.setText("");
-        jdcFechaNac.setCalendar(null);//seteo a vacio
-        jrbEstado.setSelected(false);//seteo a vacio
-        jtid.setText("");
-
-
+        
+           } catch(NumberFormatException ex){
+           JOptionPane.showMessageDialog(this, "Error: se excedio el numero de caracteres permitidos");
+           }
+        metodoLimpiar();
+        ad.mostrarAlumnos(jtTablaAlumno);
     }//GEN-LAST:event_jbModificarActionPerformed
 
-    private void jtTablaAlumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtTablaAlumnoMouseClicked
-        AlumnoData objetoAlumno = new AlumnoData();
-
-        objetoAlumno.seleccionarAlumnos(jtTablaAlumno, jtid, jtDocumentodni, jtApellido, jtNombre, jtcampofecha);
-
-    }//GEN-LAST:event_jtTablaAlumnoMouseClicked
-
-    private void jtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtidActionPerformed
+    private void jtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtApellidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtidActionPerformed
+    }//GEN-LAST:event_jtApellidoActionPerformed
 
-    private void jtcampofechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtcampofechaActionPerformed
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
 
-    }//GEN-LAST:event_jtcampofechaActionPerformed
-
-    private void jtcampofechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtcampofechaMouseClicked
-        String fecha = jtcampofecha.getText();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
+        //        try {
+        //
+        //            if (jtDocumentodni.getText().equals("")) {
+        //                JOptionPane.showMessageDialog(null, "Error: 'Buscar' el campo esta vacio");
+        //
+        //            } else {
+        //                Alumno alumno = ad.buscarAlumnoPorDni(Integer.parseInt(jtDocumentodni.getText()));
+        //                jtNombre.setText(alumno.getNombre());
+        //                jtApellido.setText(alumno.getApellido());
+        //                jrbEstado.setSelected(alumno.isActivo());
+        //                jtcampofecha.setText(alumno.getFechaNacimiento() + "");
+        //                jtid.setText(alumno.getIdAlumno() + ""); //probando
+        //                Instant fecha;
+        //                jdcFechaNac.setDateFormatString(alumno.getFechaNacimiento().toString());
+        //
+        //            }
+        //
+        //        } catch (NullPointerException ex) {
+        //            JOptionPane.showMessageDialog(this, "el dni no existe en la base de datos");
+        //            metodoLimpiar();
+        //        } catch (NumberFormatException exe) {
+        //            JOptionPane.showMessageDialog(this, "el DNI supero el limite de caracteres");
+        //            metodoLimpiar();
+        //        }
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        //        AlumnoData aludata = new AlumnoData();
+        //        Alumno alumno = aludata.buscarAlumnoPorDni(Integer.parseInt(jtDocumentodni.getText()));
+        //
+        //        if (!jtDocumentodni.getText().equalsIgnoreCase("")) {
+        //            try {
+        //
+        //                if (alumno != null) {
+        //                    jtApellido.setText(alumno.getApellido());
+        //                    jtNombre.setText(alumno.getNombre());
+        //                    jtcampofecha.setText(alumno.getFechaNacimiento() + "");
+        //
+        //                }
+        //            } catch (NumberFormatException ex) {
+        //                JOptionPane.showMessageDialog(null, "Solo puede Ingresar numeros en el campo DNI");
+        //            }
+        //        } else {
+        //            JOptionPane.showMessageDialog(null, "no puede haber campos vacios");
+        //        }
+        //
+        //jtDocumentodni.setText("");
+        //        jtApellido.setText("");
+        //        jtNombre.setText("");
+        //
+        //        jdcFechaNac.setCalendar(null);//seteo a vacio
+        //        jrbEstado.setSelected(false);//seteo a vacio
+        //
+        //        boolean estado = alumno.isActivo();
+        //        if (estado = true) {
+        //            jrbEstado.setSelected(true);
+        //        } else {
+        //            jrbEstado.setSelected(false);
+        //        }
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //        try {
+        //
+        //            if (jtDocumentodni.getText().equals("")) {
+        //                JOptionPane.showMessageDialog(null, "Error: 'Buscar' el campo esta vacio");
+        //
+        //            } else {
+        //                Alumno alumno = ad.buscarAlumnoPorDni(Integer.parseInt(jtDocumentodni.getText()));
+        //                jtNombre.setText(alumno.getNombre());
+        //                jtApellido.setText(alumno.getApellido());
+        //                jrbEstado.setSelected(alumno.isActivo());
+        //                LocalDate lc = alumno.getFechaNacimiento();
+        //                java.util.Date date = java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        //                jdcFechaNac.setDate(date);
+        //                jtid.setText(alumno.getIdAlumno() + ""); //probando
+        //
+        //            }
+        //
+        //        } catch (NullPointerException ex) {
+        //            JOptionPane.showMessageDialog(this, "el dni no existe en la base de datos");
+        //            metodoLimpiar();
+        //        } catch (NumberFormatException exe) {
+        //            JOptionPane.showMessageDialog(this, "el DNI supero el limite de caracteres");
+        //            metodoLimpiar();
+        //        }
+        //////////////////////////////////////////////////////////////////////////////////////////////
         try {
-            Date date = sdf.parse(fecha);
-            jdcFechaNac.setDate(date);
-        } catch (ParseException ex) {
-            Logger.getLogger(FormularioAlumno.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jtcampofechaMouseClicked
+            Integer dni = Integer.parseInt(jtDocumentodni.getText());
+            Alumno alumnoActual = ad.buscarAlumnoPorDni(dni);
 
-    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
-        jtid.setText("");
-        jtDocumentodni.setText("");
-        jtApellido.setText("");
-        jtNombre.setText("");
-        jtcampofecha.setText("");
-        jdcFechaNac.setCalendar(null);//seteo a vacio
-        jrbEstado.setSelected(false);//seteo a vacio
-    }//GEN-LAST:event_jbLimpiarActionPerformed
+            if (alumnoActual != null) {
+
+                jtApellido.setText(alumnoActual.getApellido());
+                jtID.setText(String.valueOf(alumnoActual.getIdAlumno()));
+                jtNombre.setText(alumnoActual.getNombre());
+                jrbEstado.setSelected(alumnoActual.isActivo());
+                LocalDate lc = alumnoActual.getFechaNacimiento();
+                java.util.Date date = java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                jdcFechaNac.setDate(date);
+
+            }
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Usted debe ingresar un numero valido");
+        }
+
+    }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jtDocumentodniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDocumentodniKeyReleased
         if (!jtDocumentodni.getText().isEmpty()) {
@@ -492,14 +634,24 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jtDocumentodniKeyReleased
 
+    private void jtDocumentodniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDocumentodniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtDocumentodniActionPerformed
+
+    private void jtTablaAlumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtTablaAlumnoMouseClicked
+        //        AlumnoData objetoAlumno = new AlumnoData();
+        //
+        //        objetoAlumno.seleccionarAlumnos(jtTablaAlumno, jtid, jtDocumentodni, jtApellido, jtNombre, jtcampofecha);
+    }//GEN-LAST:event_jtTablaAlumnoMouseClicked
+
     private void metodoLimpiar() {
         jtDocumentodni.setText("");
         jtApellido.setText("");
         jtNombre.setText("");
-        jtcampofecha.setText("");
+//        jtcampofecha.setText("");
         jdcFechaNac.setCalendar(null);//seteo a vacio
         jrbEstado.setSelected(false);//seteo a vacio
-        jtid.setText("");
+        jtID.setText("");
     }
 
 //    private LocalDate formatoFecha(){
@@ -518,6 +670,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbEliminar;
@@ -529,9 +682,8 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jrbEstado;
     private javax.swing.JTextField jtApellido;
     private javax.swing.JTextField jtDocumentodni;
+    private javax.swing.JTextField jtID;
     private javax.swing.JTextField jtNombre;
     private javax.swing.JTable jtTablaAlumno;
-    private javax.swing.JTextField jtcampofecha;
-    private javax.swing.JTextField jtid;
     // End of variables declaration//GEN-END:variables
 }
