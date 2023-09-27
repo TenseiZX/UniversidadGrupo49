@@ -19,6 +19,7 @@ public class ViewMenu extends javax.swing.JFrame {
     
     public ViewMenu() {
         initComponents();
+        this.setLocationRelativeTo(null);
         ad=new AlumnoData();
         md=new MateriaData();
     }
@@ -61,7 +62,9 @@ public class ViewMenu extends javax.swing.JFrame {
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo49/imagenes/alumno3535.png"))); // NOI18N
         jMenu1.setText("Alumno");
+        jMenu1.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
 
+        jMenuItem1.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
         jMenuItem1.setText("Formulario de alumno");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +77,9 @@ public class ViewMenu extends javax.swing.JFrame {
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo49/imagenes/materia3535.png"))); // NOI18N
         jMenu2.setText("Materia");
+        jMenu2.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
 
+        jMenuItem2.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
         jMenuItem2.setText("Formulario de materia");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,7 +92,9 @@ public class ViewMenu extends javax.swing.JFrame {
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo49/imagenes/Administracion3030.png"))); // NOI18N
         jMenu3.setText("Administracion");
+        jMenu3.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
 
+        jMenuItem3.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
         jMenuItem3.setText("Manejo de inscripciones");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +103,7 @@ public class ViewMenu extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem3);
 
+        jMenuItem4.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
         jMenuItem4.setText("Manejo de notas");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +116,9 @@ public class ViewMenu extends javax.swing.JFrame {
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo49/imagenes/consulta3030.png"))); // NOI18N
         jMenu4.setText("Consultas");
+        jMenu4.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
 
+        jMenuItem5.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
         jMenuItem5.setText("Alumno por materia");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,12 +131,14 @@ public class ViewMenu extends javax.swing.JFrame {
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo49/imagenes/salida3535.png"))); // NOI18N
         jMenu5.setText("Salir");
+        jMenu5.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
         jMenu5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu5ActionPerformed(evt);
             }
         });
 
+        jMenuItem6.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
         jMenuItem6.setText("Cerrar Administrador");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

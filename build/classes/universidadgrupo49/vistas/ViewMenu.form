@@ -10,10 +10,16 @@
               <Image iconType="3" name="/universidadgrupo49/imagenes/alumno3535.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Alumno"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara" size="12" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Candara" size="12" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Formulario de alumno"/>
               </Properties>
               <Events>
@@ -28,10 +34,16 @@
               <Image iconType="3" name="/universidadgrupo49/imagenes/materia3535.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Materia"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara" size="12" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Candara" size="12" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Formulario de materia"/>
               </Properties>
               <Events>
@@ -46,10 +58,16 @@
               <Image iconType="3" name="/universidadgrupo49/imagenes/Administracion3030.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Administracion"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara" size="12" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Candara" size="12" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Manejo de inscripciones"/>
               </Properties>
               <Events>
@@ -58,6 +76,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Candara" size="12" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Manejo de notas"/>
               </Properties>
               <Events>
@@ -72,10 +93,16 @@
               <Image iconType="3" name="/universidadgrupo49/imagenes/consulta3030.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Consultas"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara" size="12" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Candara" size="12" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Alumno por materia"/>
               </Properties>
               <Events>
@@ -90,6 +117,9 @@
               <Image iconType="3" name="/universidadgrupo49/imagenes/salida3535.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara" size="12" style="1"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu5ActionPerformed"/>
@@ -97,6 +127,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Candara" size="12" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cerrar Administrador"/>
               </Properties>
               <Events>

@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 public class Conexion {
 
     private static final String URL = "jdbc:mariadb://localhost/"; //cambiar por nombre de la base de datos
-    private static final String DB = "universidad49";
+    private static final String DB = "universidad49-2";
     private static final String USUARIO = "root";
     private static final String PASSWORD = "";
     //singleton crea una unica conexion con la base de datos

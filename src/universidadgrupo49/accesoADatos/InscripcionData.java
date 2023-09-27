@@ -12,9 +12,7 @@ import universidadgrupo49.entidades.Alumno;
 import universidadgrupo49.entidades.Inscripcion;
 import universidadgrupo49.entidades.Materia;
 
-//import universidadgrupo49.accesoADatos.AlumnoData;
-//import universidadgrupo49.entidades.Alumno;
-//import universidadgrupo49.entidades.Materia;
+
 public class InscripcionData {
 
     private Connection con = null;
@@ -25,18 +23,15 @@ public class InscripcionData {
     PreparedStatement ps;
     ResultSet rs;
     Inscripcion inscripcion = null;
-//    MateriaData matData;
-//    AlumnoData aluData;
-//    Alumno alu;
-//    Materia mat;
+
 
     public InscripcionData() {
-        con = Conexion.getConexion();//Se va a conectar a la base de datos
+        con = Conexion.getConexion();
     }
 
     public void guardarInscripcion(Inscripcion ins) {
 
-//        Inscripcion ins, int idAlumno, int idMateria
+
         
         String sql = "INSERT INTO inscripcion(nota, idAlumno, idMateria) VALUES (?,?,?)";
         
@@ -58,7 +53,7 @@ public class InscripcionData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error"+ex);
+            JOptionPane.showMessageDialog(null, "Error: acceso a base de datos"+ex);
         }
         
 
@@ -185,17 +180,17 @@ public class InscripcionData {
         try {
             
             ps = con.prepareStatement(sql);
-            ps.setInt(1, idAlumno);//aca tomamos el id del alumno para dar de baja
-            ps.setInt(2, idMateria);//aca tomamos el id de la materia para dar de baja
+            ps.setInt(1, idAlumno);
+            ps.setInt(2, idMateria);
             
-          int msj=JOptionPane.showConfirmDialog(null,"estas seguro que desea dar de baja este alumno?");
+          int msj=JOptionPane.showConfirmDialog(null,"¿Estas seguro que desea dar de baja este alumno de esta materia?");
           if(msj==0){
           ps.executeUpdate();
-          JOptionPane.showMessageDialog(null, "alumno dado de baja exitosamente");
+          JOptionPane.showMessageDialog(null, "Alumno dado de baja de la materia");
           }
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la BD"+ex);
+            JOptionPane.showMessageDialog(null, "Error: al acceder a la BD"+ex);
         }
 
     }

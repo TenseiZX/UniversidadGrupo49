@@ -17,11 +17,11 @@ public class MateriaData {
     private Connection con = null;
     PreparedStatement ps;
     ResultSet rs;
-//    Materia materia = null;
+
     ArrayList<Materia> materias = new ArrayList<>();
 
     public MateriaData() {
-        con = Conexion.getConexion();//Se va a conectar a la base de datos
+        con = Conexion.getConexion();
     }
 
     public void guardarMateria(Materia materia) {
@@ -44,7 +44,7 @@ public class MateriaData {
             ps.close();//cierro
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error entrada duplicada");
+            JOptionPane.showMessageDialog(null, "Error: Entrada duplicada.");
         }
 
     }
@@ -69,16 +69,15 @@ public class MateriaData {
                 materia.setEstado(true);
 
             } else {
-                JOptionPane.showMessageDialog(null, "id de la materia no existe SQL");
-                
-                
+                JOptionPane.showMessageDialog(null, "Error: Id de la materia no existe.");
+                return null;
                 
             }
             
-            ps.close();//cierro
+            ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla materia");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
         }
         return materia;
 
@@ -96,11 +95,11 @@ public class MateriaData {
             ps.setBoolean(3, materia.isEstado());
             int exito = ps.executeUpdate();
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "materia modificada exitosamente");
+                JOptionPane.showMessageDialog(null, "Materia modificada exitosamente.");
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla materia");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
         }
 
     }
@@ -113,7 +112,7 @@ public class MateriaData {
             ps.setInt(1, id);
             int exito = ps.executeUpdate();
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "materia eliminada");
+                JOptionPane.showMessageDialog(null, "Materia eliminada.");
             }
 
         } catch (SQLException ex) {
@@ -142,7 +141,7 @@ public class MateriaData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error ");
+            JOptionPane.showMessageDialog(null, "Error: en listar materias. ");
         }
         return materias;
         
@@ -153,7 +152,7 @@ public class MateriaData {
         DefaultTableModel modelo=new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int i, int i1) {
-                return false; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+                return false; // 
             }
         
         };
@@ -192,7 +191,7 @@ public class MateriaData {
             
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"error al acceder a los datos de la base de datos");
+            JOptionPane.showMessageDialog(null,"Error al acceder al base de datos");
         }
     
     

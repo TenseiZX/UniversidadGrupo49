@@ -48,14 +48,26 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(53, 166, 136));
 
+        jLabel1.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         jLabel1.setText("ID:");
 
+        jtID.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         jLabel2.setText("Nombre:");
 
+        jLabel3.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         jLabel3.setText("Año:");
 
+        jLabel4.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         jLabel4.setText("Estado:");
 
+        jtNombre.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+
+        jtAnio.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+
+        jbBuscar.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
+        jbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo49/imagenes/Buscar2525.png"))); // NOI18N
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,8 +75,10 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         jLabel6.setText("Formulario de materias");
 
+        jtTablaMateria.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
         jtTablaMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -91,6 +105,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jtTablaMateria);
 
+        jbGuardar.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,20 +113,25 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
             }
         });
 
+        jbEliminar.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         jbEliminar.setText("Eliminar");
+        jbEliminar.setEnabled(false);
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEliminarActionPerformed(evt);
             }
         });
 
+        jbModificar.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         jbModificar.setText("Modificar");
+        jbModificar.setEnabled(false);
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbModificarActionPerformed(evt);
             }
         });
 
+        jbSalir.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +139,8 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
             }
         });
 
+        jbLimpiar.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
+        jbLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo49/imagenes/borrar2525.png"))); // NOI18N
         jbLimpiar.setText("Limpiar");
         jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,38 +155,39 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jtAnio, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addComponent(jtID)
-                            .addComponent(jrbEstado, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtNombre))
-                        .addGap(31, 31, 31)
-                        .addComponent(jbBuscar))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbGuardar)
-                            .addComponent(jbModificar))
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jbEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                            .addComponent(jbLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(jbSalir))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(94, 94, 94)
-                        .addComponent(jLabel6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jbGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                                    .addComponent(jbSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jbModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jbEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jtAnio, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                    .addComponent(jtID)
+                                    .addComponent(jrbEstado, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtNombre))
+                                .addGap(28, 28, 28)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jbLimpiar)
+                                    .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,30 +201,29 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
                             .addComponent(jLabel1)
                             .addComponent(jtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jbBuscar))
-                        .addGap(34, 34, 34)
+                        .addGap(28, 28, 28)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(46, 46, 46)
+                            .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbLimpiar)
+                            .addComponent(jLabel2))
+                        .addGap(41, 41, 41)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
                         .addGap(47, 47, 47)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jrbEstado)
                             .addComponent(jLabel4))
                         .addGap(49, 49, 49)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbGuardar)
-                            .addComponent(jbEliminar))
+                            .addComponent(jbModificar)
+                            .addComponent(jbGuardar))
                         .addGap(37, 37, 37)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbModificar)
-                            .addComponent(jbLimpiar))
-                        .addGap(18, 18, 18)
-                        .addComponent(jbSalir))
+                            .addComponent(jbEliminar)
+                            .addComponent(jbSalir)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -225,14 +247,45 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         
-        try{
-        md.guardarMateria(new Materia(jtNombre.getText(), Integer.parseInt(jtAnio.getText()), jrbEstado.isSelected()));
-        }catch (NumberFormatException ex){
-        JOptionPane.showMessageDialog(null,"error no puede haber campos vacios");
+//        try{
+//        md.guardarMateria(new Materia(jtNombre.getText(), Integer.parseInt(jtAnio.getText()), jrbEstado.isSelected()));
+//        }catch (NumberFormatException ex){
+//        JOptionPane.showMessageDialog(null,"Error: No puede haber campos vacios");
+//        }
+//        
+//        metodoLimpiar();
+//        md.mostrarMaterias(jtTablaMateria);
+
+try{ 
+
+            if (!jtNombre.getText().equals("")&&!jtAnio.getText().equals("")&&jrbEstado.isSelected()!=false) {
+            MateriaData mat = new MateriaData();
+            String nombre;
+            int anio;
+            boolean estado;
+            nombre = jtNombre.getText();
+            
+            anio = Integer.parseInt(jtAnio.getText());
+            if (jrbEstado.isSelected()) {
+                estado = true;
+            } else {
+                estado = false;
+            }
+            
+            Materia materia = new Materia(nombre, anio, estado);
+            mat.guardarMateria(materia);
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: No puede haber campos vacios");
+
         }
         
+           } catch(NumberFormatException ex){
+           JOptionPane.showMessageDialog(this, "Error: Campo vacio o se supero el limite de caracteres permitidos.");
+           }
         metodoLimpiar();
         md.mostrarMaterias(jtTablaMateria);
+
+
         
        
         
@@ -245,7 +298,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         
         int cambiarAInactivo=Integer.parseInt(jtID.getText());
         
-        int msj=JOptionPane.showConfirmDialog(this,"estas seguro que desea eliminar este alumno?");
+        int msj=JOptionPane.showConfirmDialog(this,"¿Está seguro que desea eliminar este alumno?");
         
         if(msj==0){
         md.eliminarMateria(cambiarAInactivo);
@@ -256,7 +309,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         
         
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "campos vacios");
+            JOptionPane.showMessageDialog(null, "Error: No puede haber campos vacios.");
         }
         
         
@@ -265,8 +318,6 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jtTablaMateriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtTablaMateriaMouseClicked
-        
-//        md.seleccionarMaterias(jtTablaMateria, jtID, jtNombre, jtAnio, jrbEstado);
         
         
         
@@ -283,9 +334,9 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         md.mostrarMaterias(jtTablaMateria);
         
         }catch (NumberFormatException ex){
-        JOptionPane.showMessageDialog(null, "error no puede haber campos vacios ");
+        JOptionPane.showMessageDialog(null, "Error: No puede haber campos vacios.");
         }catch (NullPointerException ex){
-        JOptionPane.showMessageDialog(null, "no puede haber campos vacios");
+        JOptionPane.showMessageDialog(null, "Error: No puede haber campos vacios.");
         }
         
         
@@ -297,6 +348,12 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
+        
+        jbGuardar.setEnabled(true);
+        jbSalir.setEnabled(true);
+        jbEliminar.setEnabled(false);
+        jbModificar.setEnabled(false);
+
         jtID.setText("");
         jtAnio.setText("");
         jtNombre.setText("");
@@ -304,35 +361,9 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        
-        
-        
-//        try {
-//        
-//        if (jtID.getText().equals("")) {
-//            JOptionPane.showMessageDialog(null, "el campo esta vacio");
-//           
-//        } else {
-//            
-//        
-//            Materia materia = md.buscarMateria(Integer.parseInt(jtID.getText()));
-//            jtNombre.setText(materia.getNombre());
-//            jtAnio.setText(materia.getAnio()+"");
-//            jrbEstado.setSelected(materia.isEstado());
-//            
-//        }
-//       
-//        
-//        } catch (NullPointerException ex){
-//        
-//            JOptionPane.showMessageDialog(this,"El id de la materia no existe en la base de datos");
-//            metodoLimpiar();
-//        
-//        } catch (NumberFormatException exe){
-//        
-//            JOptionPane.showMessageDialog(this,"Error: los caracteres no son validos o se supero el limite de caracteres que se pueden ingresar");
-//                metodoLimpiar();
-//        }
+    jbGuardar.setEnabled(false);
+    jbModificar.setEnabled(true);
+    jbEliminar.setEnabled(true);
 
     try{
     
@@ -343,6 +374,8 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
     jtNombre.setText(materiaActual.getNombre());
     jtAnio.setText(materiaActual.getAnio()+"");
     jrbEstado.setSelected(materiaActual.isEstado());
+    }else{
+    metodoLimpiar();
     }
     
     
@@ -355,7 +388,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         
         } catch (NumberFormatException exe){
         
-            JOptionPane.showMessageDialog(this,"Error: los caracteres no son validos o se supero el limite de caracteres que se pueden ingresar");
+            JOptionPane.showMessageDialog(this,"Error: Campo vacio o se supero el limite de caracteres permitidos.");
                 metodoLimpiar();
         }
         

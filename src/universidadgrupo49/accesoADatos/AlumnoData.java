@@ -21,26 +21,26 @@ public class AlumnoData {
     PreparedStatement ps;
     ResultSet rs;
 //    Alumno alumno = null;
-    ArrayList<Alumno> alumnos = new ArrayList<>();//lista vacia de alumnos 
+    ArrayList<Alumno> alumnos = new ArrayList<>();
 
     public AlumnoData() {
-        con = Conexion.getConexion();//Se va a conectar a la base de datos
+        con = Conexion.getConexion();
     }
 
     //guardar alumno
     public void guardarAlumno(Alumno alumno) {
         String sql = "INSERT INTO alumno(dni,apellido,nombre,fechaNacimiento,estado)"
-                + "VALUES(?,?,?,?,?)";//caracteres comodines
+                + "VALUES(?,?,?,?,?)";
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, alumno.getDni());//seteo en orden de lo q pase y el tipo de dato
+            ps.setInt(1, alumno.getDni());
             ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
-            ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));//por que es del tipo de fecha
-            ps.setBoolean(5, alumno.isActivo());//por q es boolean se genera como is
+            ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
+            ps.setBoolean(5, alumno.isActivo());
             ps.executeUpdate();
 
-            rs = ps.getGeneratedKeys();//genera una sola fila
+            rs = ps.getGeneratedKeys();
             
             
             if (rs.next()) {
@@ -50,7 +50,7 @@ public class AlumnoData {
             ps.close();//cierro
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ESTE ALUMNO YA EXISTE EN LA BASE DE DATOS");
+            JOptionPane.showMessageDialog(null, "Error: Entrada duplicada");
         }
 
     }
@@ -60,20 +60,19 @@ public class AlumnoData {
 
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, alumno.getDni());//seteo en orden de lo q pase y el tipo de dato
+            ps.setInt(1, alumno.getDni());
             ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
-            ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));//por que es del tipo de fecha
+            ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
             ps.setInt(5, alumno.getIdAlumno());
-//            ps.setBoolean(5, alumno.isActivo());
             int exito = ps.executeUpdate();
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Alumno modificado exitosamente");
+                JOptionPane.showMessageDialog(null, "Alumno modificado exitosamente.");
 
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+            JOptionPane.showMessageDialog(null, "Error: al acceder a la tabla alumno");
         }
 
     }
@@ -83,7 +82,7 @@ public class AlumnoData {
 
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, id);//por parametro el id
+            ps.setInt(1, id);
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Alumno eliminado");
@@ -94,28 +93,29 @@ public class AlumnoData {
         }
     }
 
-    public Alumno buscarAlumno(int id) {//solo va a traer los alumnos activos
+    public Alumno buscarAlumno(int id) {
         String sql = "SELECT dni,apellido,nombre,fechaNacimiento FROM alumno WHERE idAlumno= ?";
         Alumno alumno=null;
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
-            rs = ps.executeQuery();//ResultSET por q es una consulta
+            rs = ps.executeQuery();
             if (rs.next()) {
-                alumno = new Alumno();//El q tiene el constructor vacio
-                alumno.setIdAlumno(id);//por que ya lo tengo por parametro
-                alumno.setDni(rs.getInt("dni"));//paso las columnas de mi tabla. MISMO NOMBRE
+                alumno = new Alumno();
+                alumno.setIdAlumno(id);
+                alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());// lo combierto a local date
+                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setActivo(true);
 
             } else {
-                JOptionPane.showMessageDialog(null, "El id del Alumno no existe ");
+                JOptionPane.showMessageDialog(null, "Error: El DNI del Alumno no existe ");
+                return null;
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+            JOptionPane.showMessageDialog(null, "Error: al acceder a la tabla alumno");
         }
         return alumno;
     }
@@ -127,22 +127,22 @@ public class AlumnoData {
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, dni);
-            rs = ps.executeQuery();//ResultSET por q es una consulta
+            rs = ps.executeQuery();
             if (rs.next()) {
-                alumno = new Alumno();//El q tiene el constructor vacio
+                alumno = new Alumno();
                 alumno.setIdAlumno(rs.getInt("idAlumno"));
-                alumno.setDni(rs.getInt("dni"));//paso las columnas de mi tabla. MISMO NOMBRE
+                alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());// lo combierto a local date
+                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setActivo(true);
 
             } else {
-                JOptionPane.showMessageDialog(null, "El id del Alumno no existe ");
+                JOptionPane.showMessageDialog(null, "Error: El id del Alumno no existe. ");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+            JOptionPane.showMessageDialog(null, "Error: al acceder a la tabla alumno");
         }
         return alumno;
 
@@ -153,17 +153,17 @@ public class AlumnoData {
 
         try {
             ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();//ResultSET por q es una consulta
-            while (rs.next()) {//por que tiene mas de una fila
+            rs = ps.executeQuery();
+            while (rs.next()) {
                 Alumno alumno = new Alumno();
                 alumno.setIdAlumno(rs.getInt("idAlumno"));
-                alumno.setDni(rs.getInt("dni"));//paso las columnas de mi tabla. MISMO NOMBRE
+                alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());// lo combierto a local date
+                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setActivo(true);
 
-                alumnos.add(alumno);//guarda los alumnos en la lista
+                alumnos.add(alumno);
 
             }
             ps.close();
@@ -180,7 +180,7 @@ public class AlumnoData {
         DefaultTableModel modelo=new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int i, int i1) {
-                return false; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+                return false; // 
             }
         
         };
@@ -221,7 +221,7 @@ public class AlumnoData {
             
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"error al acceder a los datos de la base de datos");
+            JOptionPane.showMessageDialog(null,"Error: al acceder a los datos de la base de datos");
         }
         
     }
@@ -292,8 +292,7 @@ public class AlumnoData {
     
       
     
-    //METODO PARA IMPRIMIR LA LISTA
-//    public List<Alumno> mostrarLista(){} 
+
     
     
     
